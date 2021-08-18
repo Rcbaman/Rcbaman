@@ -35,6 +35,9 @@
                             {{ trans('cruds.dish.fields.crusts') }}
                         </th>
                         <th>
+                            {{ trans('cruds.dish.fields.category') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -69,6 +72,14 @@
                             </select>
                         </td>
                         <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($categories as $key => $item)
+                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
                         </td>
                     </tr>
                 </thead>
@@ -91,6 +102,9 @@
                             </td>
                             <td>
                                 {{ $dish->crusts->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $dish->category->name ?? '' }}
                             </td>
                             <td>
                                 @can('dish_show')

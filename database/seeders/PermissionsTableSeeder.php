@@ -284,66 +284,94 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 69,
-                'title' => 'customer_management_create',
-            ],
-            [
-                'id'    => 70,
-                'title' => 'customer_management_edit',
-            ],
-            [
-                'id'    => 71,
-                'title' => 'customer_management_show',
-            ],
-            [
-                'id'    => 72,
-                'title' => 'customer_management_delete',
-            ],
-            [
-                'id'    => 73,
-                'title' => 'customer_management_access',
-            ],
-            [
-                'id'    => 74,
-                'title' => 'address_create',
-            ],
-            [
-                'id'    => 75,
-                'title' => 'address_edit',
-            ],
-            [
-                'id'    => 76,
-                'title' => 'address_show',
-            ],
-            [
-                'id'    => 77,
-                'title' => 'address_delete',
-            ],
-            [
-                'id'    => 78,
-                'title' => 'address_access',
-            ],
-            [
-                'id'    => 79,
                 'title' => 'transaction_create',
             ],
             [
-                'id'    => 80,
+                'id'    => 70,
                 'title' => 'transaction_edit',
             ],
             [
-                'id'    => 81,
+                'id'    => 71,
                 'title' => 'transaction_show',
             ],
             [
-                'id'    => 82,
+                'id'    => 72,
                 'title' => 'transaction_delete',
             ],
             [
-                'id'    => 83,
+                'id'    => 73,
                 'title' => 'transaction_access',
             ],
             [
+                'id'    => 74,
+                'title' => 'customer_detail_create',
+            ],
+            [
+                'id'    => 75,
+                'title' => 'customer_detail_edit',
+            ],
+            [
+                'id'    => 76,
+                'title' => 'customer_detail_show',
+            ],
+            [
+                'id'    => 77,
+                'title' => 'customer_detail_delete',
+            ],
+            [
+                'id'    => 78,
+                'title' => 'customer_detail_access',
+            ],
+            [
+                'id'    => 79,
+                'title' => 'customers_management_access',
+            ],
+            [
+                'id'    => 80,
+                'title' => 'customer_address_create',
+            ],
+            [
+                'id'    => 81,
+                'title' => 'customer_address_edit',
+            ],
+            [
+                'id'    => 82,
+                'title' => 'customer_address_show',
+            ],
+            [
+                'id'    => 83,
+                'title' => 'customer_address_delete',
+            ],
+            [
                 'id'    => 84,
+                'title' => 'customer_address_access',
+            ],
+            [
+                'id'    => 85,
+                'title' => 'accounts_management_access',
+            ],
+            [
+                'id'    => 86,
+                'title' => 'tax_profile_create',
+            ],
+            [
+                'id'    => 87,
+                'title' => 'tax_profile_edit',
+            ],
+            [
+                'id'    => 88,
+                'title' => 'tax_profile_show',
+            ],
+            [
+                'id'    => 89,
+                'title' => 'tax_profile_delete',
+            ],
+            [
+                'id'    => 90,
+                'title' => 'tax_profile_access',
+            ],
+            [
+                'id'    => 91,
                 'title' => 'profile_password_edit',
             ],
         ];

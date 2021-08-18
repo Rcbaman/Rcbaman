@@ -71,17 +71,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('orders/destroy', 'OrdersController@massDestroy')->name('orders.massDestroy');
     Route::resource('orders', 'OrdersController');
 
-    // Customer Management
-    Route::delete('customer-managements/destroy', 'CustomerManagementController@massDestroy')->name('customer-managements.massDestroy');
-    Route::resource('customer-managements', 'CustomerManagementController');
-
-    // Address
-    Route::delete('addresses/destroy', 'AddressController@massDestroy')->name('addresses.massDestroy');
-    Route::resource('addresses', 'AddressController');
-
     // Transactions
     Route::delete('transactions/destroy', 'TransactionsController@massDestroy')->name('transactions.massDestroy');
     Route::resource('transactions', 'TransactionsController');
+
+    // Customer Details
+    Route::delete('customer-details/destroy', 'CustomerDetailsController@massDestroy')->name('customer-details.massDestroy');
+    Route::resource('customer-details', 'CustomerDetailsController');
+
+    // Customer Addresses
+    Route::delete('customer-addresses/destroy', 'CustomerAddressesController@massDestroy')->name('customer-addresses.massDestroy');
+    Route::resource('customer-addresses', 'CustomerAddressesController');
+
+    // Tax Profiles
+    Route::delete('tax-profiles/destroy', 'TaxProfilesController@massDestroy')->name('tax-profiles.massDestroy');
+    Route::resource('tax-profiles', 'TaxProfilesController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

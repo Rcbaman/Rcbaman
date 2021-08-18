@@ -29,8 +29,10 @@ class Transaction extends Model
     protected $fillable = [
         'amount',
         'status',
-        'type',
         'method',
+        'sub_total',
+        'tax',
+        'other_charges',
         'created_at',
         'updated_at',
         'deleted_at',

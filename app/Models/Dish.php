@@ -23,6 +23,7 @@ class Dish extends Model
     protected $fillable = [
         'product_id',
         'crusts_id',
+        'category_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -41,6 +42,11 @@ class Dish extends Model
     public function crusts()
     {
         return $this->belongsTo(Crust::class, 'crusts_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)
