@@ -37,6 +37,10 @@ class UpdateUserRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'mobile_number' => [
+                'string',
+                'nullable',
+            ],
             'roles.*' => [
                 'integer',
             ],

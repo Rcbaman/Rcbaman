@@ -43,12 +43,15 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Orders
     Route::apiResource('orders', 'OrdersApiController');
 
-    // Customer Management
-    Route::apiResource('customer-managements', 'CustomerManagementApiController');
-
-    // Address
-    Route::apiResource('addresses', 'AddressApiController');
-
     // Transactions
     Route::apiResource('transactions', 'TransactionsApiController');
+
+    // Customer Details
+    Route::apiResource('customer-details', 'CustomerDetailsApiController');
+
+    // Customer Addresses
+    Route::apiResource('customer-addresses', 'CustomerAddressesApiController');
+
+    // Tax Profiles
+    Route::apiResource('tax-profiles', 'TaxProfilesApiController');
 });

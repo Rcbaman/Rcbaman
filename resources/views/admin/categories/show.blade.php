@@ -88,14 +88,14 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#category_products" role="tab" data-toggle="tab">
-                {{ trans('cruds.product.title') }}
+            <a class="nav-link" href="#category_dishes" role="tab" data-toggle="tab">
+                {{ trans('cruds.dish.title') }}
             </a>
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="category_products">
-            @includeIf('admin.categories.relationships.categoryProducts', ['products' => $category->categoryProducts])
+        <div class="tab-pane" role="tabpanel" id="category_dishes">
+            @includeIf('admin.categories.relationships.categoryDishes', ['dishes' => $category->categoryDishes])
         </div>
     </div>
 </div>

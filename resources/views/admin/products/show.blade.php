@@ -97,14 +97,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.product.fields.category') }}
-                        </th>
-                        <td>
-                            {{ $product->category->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.product.fields.slug') }}
                         </th>
                         <td>

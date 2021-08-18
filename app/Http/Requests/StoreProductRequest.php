@@ -31,10 +31,6 @@ class StoreProductRequest extends FormRequest
             'status' => [
                 'required',
             ],
-            'category_id' => [
-                'required',
-                'integer',
-            ],
             'slug' => [
                 'string',
                 'nullable',
