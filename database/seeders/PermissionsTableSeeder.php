@@ -348,6 +348,30 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 85,
+                'title' => 'accounts_management_access',
+            ],
+            [
+                'id'    => 86,
+                'title' => 'tax_profile_create',
+            ],
+            [
+                'id'    => 87,
+                'title' => 'tax_profile_edit',
+            ],
+            [
+                'id'    => 88,
+                'title' => 'tax_profile_show',
+            ],
+            [
+                'id'    => 89,
+                'title' => 'tax_profile_delete',
+            ],
+            [
+                'id'    => 90,
+                'title' => 'tax_profile_access',
+            ],
+            [
+                'id'    => 91,
                 'title' => 'profile_password_edit',
             ],
         ];

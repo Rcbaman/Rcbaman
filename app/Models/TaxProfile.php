@@ -7,18 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Transaction extends Model
+class TaxProfile extends Model
 {
     use SoftDeletes;
     use HasFactory;
 
-    public const STATUS_SELECT = [
-        'initialize' => 'Initialize',
-        'complete'   => 'Complete',
-        'failed'     => 'Failed',
-    ];
-
-    public $table = 'transactions';
+    public $table = 'tax_profiles';
 
     protected $dates = [
         'created_at',
@@ -27,21 +21,13 @@ class Transaction extends Model
     ];
 
     protected $fillable = [
-        'amount',
-        'status',
-        'method',
-        'sub_total',
-        'tax',
-        'other_charges',
+        'name',
+        'type',
+        'value',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
-
-    public function transactionOrders()
-    {
-        return $this->hasMany(Order::class, 'transaction_id', 'id');
-    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

@@ -209,30 +209,6 @@
                         </ul>
                     </li>
                 @endcan
-                @can('order_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.orders.index") }}" class="nav-link {{ request()->is("admin/orders") || request()->is("admin/orders/*") ? "active" : "" }}">
-                            <i class="fa-fw nav-icon fas fa-chess-king">
-
-                            </i>
-                            <p>
-                                {{ trans('cruds.order.title') }}
-                            </p>
-                        </a>
-                    </li>
-                @endcan
-                @can('transaction_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.transactions.index") }}" class="nav-link {{ request()->is("admin/transactions") || request()->is("admin/transactions/*") ? "active" : "" }}">
-                            <i class="fa-fw nav-icon fas fa-money-bill-wave">
-
-                            </i>
-                            <p>
-                                {{ trans('cruds.transaction.title') }}
-                            </p>
-                        </a>
-                    </li>
-                @endcan
                 @can('customers_management_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/customer-details*") ? "menu-open" : "" }} {{ request()->is("admin/customer-addresses*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
@@ -265,6 +241,57 @@
                                         </i>
                                         <p>
                                             {{ trans('cruds.customerAddress.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
+                @can('accounts_management_access')
+                    <li class="nav-item has-treeview {{ request()->is("admin/orders*") ? "menu-open" : "" }} {{ request()->is("admin/transactions*") ? "menu-open" : "" }} {{ request()->is("admin/tax-profiles*") ? "menu-open" : "" }}">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.accountsManagement.title') }}
+                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @can('order_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.orders.index") }}" class="nav-link {{ request()->is("admin/orders") || request()->is("admin/orders/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-chess-king">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.order.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('transaction_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.transactions.index") }}" class="nav-link {{ request()->is("admin/transactions") || request()->is("admin/transactions/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-money-bill-wave">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.transaction.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('tax_profile_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.tax-profiles.index") }}" class="nav-link {{ request()->is("admin/tax-profiles") || request()->is("admin/tax-profiles/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.taxProfile.title') }}
                                         </p>
                                     </a>
                                 </li>

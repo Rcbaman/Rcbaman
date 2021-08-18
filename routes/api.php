@@ -76,4 +76,12 @@ Route::group(['prefix' => 'v1/hubapp', 'as' => 'api.', 'namespace' => 'Api\V1\Hu
     Route::post('newaddress', [CashierWithCustomerController::class,'addCustomerAddress']);
     
     
+    // Customer Details
+    Route::apiResource('customer-details', 'CustomerDetailsApiController');
+
+    // Customer Addresses
+    Route::apiResource('customer-addresses', 'CustomerAddressesApiController');
+
+    // Tax Profiles
+    Route::apiResource('tax-profiles', 'TaxProfilesApiController');
 });

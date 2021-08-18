@@ -40,11 +40,6 @@ class CustomerDetail extends Model
         'deleted_at',
     ];
 
-    public function customerAddresses()
-    {
-        return $this->hasMany(CustomerAddress::class, 'customer_id', 'id');
-    }
-
     public function customerCustomerAddresses()
     {
         return $this->hasMany(CustomerAddress::class, 'customer_id', 'id');
