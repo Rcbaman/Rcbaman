@@ -10,8 +10,8 @@ class CreateCustomerManagementsTable extends Migration
     {
         Schema::create('customer_managements', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('mobile_number')->unique();
-            $table->string('first_name');
+            $table->bigInteger('mobile_number')->unique();
+            $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('email')->unique();
             $table->date('dob')->nullable();

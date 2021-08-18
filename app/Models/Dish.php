@@ -43,6 +43,11 @@ class Dish extends Model
         return $this->belongsTo(Crust::class, 'crusts_id');
     }
 
+    public function categories()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

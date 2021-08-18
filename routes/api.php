@@ -1,5 +1,14 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Api\V1\Hubapp\Cashier\CashierAuthController;
+use App\Http\Controllers\Api\V1\Hubapp\Cashier\CashierQuickController;
+use App\Http\Controllers\Api\V1\Hubapp\Cashier\CashierWithCustomerController;
+
+
+
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Permissions
     Route::apiResource('permissions', 'PermissionsApiController');
@@ -51,4 +60,23 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Transactions
     Route::apiResource('transactions', 'TransactionsApiController');
+
+
+    
+});
+
+ //Cashier Login & Registration
+Route::group(['prefix' => 'v1/hubapp', 'as' => 'api.', 'namespace' => 'Api\V1\Hubapp\Cashier'], function (){
+    Route::post('register', [CashierAuthController::class,'Register']);
+    Route::post('login', [CashierAuthController::class,'Login']);
+    Route::get('categories', [CashierQuickController::class,'categoriesList']);
+    Route::get('category/{id}/dishes', [CashierQuickController::class,'CategoriesByDishes']);
+
+});
+
+Route::group(['prefix' => 'v1/hubapp', 'as' => 'api.', 'namespace' => 'Api\V1\Hubapp\Cashier', 'middleware' => ['auth:sanctum']], function () {
+    // Cashier Profile Information
+    Route::get('profile', [CashierAuthController::class,'Profile']);
+    Route::post('addcustomer', [CashierWithCustomerController::class,'addNewCustomer']);
+    
 });
