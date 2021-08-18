@@ -1,41 +1,47 @@
 @extends('layouts.admin')
 @section('content')
-@can('dish_create')
+@can('customer_detail_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.dishes.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.dish.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.customer-details.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.customerDetail.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.dish.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.customerDetail.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Dish">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-CustomerDetail">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.dish.fields.id') }}
+                            {{ trans('cruds.customerDetail.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.dish.fields.product') }}
+                            {{ trans('cruds.customerDetail.fields.first_name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.dish.fields.ingredients') }}
+                            {{ trans('cruds.customerDetail.fields.last_name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.dish.fields.crusts') }}
+                            {{ trans('cruds.customerDetail.fields.email') }}
                         </th>
                         <th>
-                            {{ trans('cruds.dish.fields.category') }}
+                            {{ trans('cruds.customerDetail.fields.mobile_number') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.customerDetail.fields.dob') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.customerDetail.fields.gender') }}
                         </th>
                         <th>
                             &nbsp;
@@ -48,34 +54,24 @@
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
-                            <select class="search">
-                                <option value>{{ trans('global.all') }}</option>
-                                @foreach($products as $key => $item)
-                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
-                                @endforeach
-                            </select>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
-                            <select class="search">
-                                <option value>{{ trans('global.all') }}</option>
-                                @foreach($dish_ingredients as $key => $item)
-                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
-                                @endforeach
-                            </select>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
-                            <select class="search">
-                                <option value>{{ trans('global.all') }}</option>
-                                @foreach($crusts as $key => $item)
-                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
-                                @endforeach
-                            </select>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
-                            <select class="search">
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <select class="search" strict="true">
                                 <option value>{{ trans('global.all') }}</option>
-                                @foreach($categories as $key => $item)
-                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                @foreach(App\Models\CustomerDetail::GENDER_SELECT as $key => $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -84,43 +80,47 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($dishes as $key => $dish)
-                        <tr data-entry-id="{{ $dish->id }}">
+                    @foreach($customerDetails as $key => $customerDetail)
+                        <tr data-entry-id="{{ $customerDetail->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $dish->id ?? '' }}
+                                {{ $customerDetail->id ?? '' }}
                             </td>
                             <td>
-                                {{ $dish->product->name ?? '' }}
+                                {{ $customerDetail->first_name ?? '' }}
                             </td>
                             <td>
-                                @foreach($dish->ingredients as $key => $item)
-                                    <span class="badge badge-info">{{ $item->name }}</span>
-                                @endforeach
+                                {{ $customerDetail->last_name ?? '' }}
                             </td>
                             <td>
-                                {{ $dish->crusts->name ?? '' }}
+                                {{ $customerDetail->email ?? '' }}
                             </td>
                             <td>
-                                {{ $dish->category->name ?? '' }}
+                                {{ $customerDetail->mobile_number ?? '' }}
                             </td>
                             <td>
-                                @can('dish_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.dishes.show', $dish->id) }}">
+                                {{ $customerDetail->dob ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\CustomerDetail::GENDER_SELECT[$customerDetail->gender] ?? '' }}
+                            </td>
+                            <td>
+                                @can('customer_detail_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.customer-details.show', $customerDetail->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('dish_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.dishes.edit', $dish->id) }}">
+                                @can('customer_detail_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.customer-details.edit', $customerDetail->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('dish_delete')
-                                    <form action="{{ route('admin.dishes.destroy', $dish->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('customer_detail_delete')
+                                    <form action="{{ route('admin.customer-details.destroy', $customerDetail->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -145,11 +145,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('dish_delete')
+@can('customer_detail_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.dishes.massDestroy') }}",
+    url: "{{ route('admin.customer-details.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -180,7 +180,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-Dish:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-CustomerDetail:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

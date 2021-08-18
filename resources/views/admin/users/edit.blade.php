@@ -59,6 +59,14 @@
                 <span class="help-block">{{ trans('cruds.user.fields.country_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="mobile_number">{{ trans('cruds.user.fields.mobile_number') }}</label>
+                <input class="form-control {{ $errors->has('mobile_number') ? 'is-invalid' : '' }}" type="text" name="mobile_number" id="mobile_number" value="{{ old('mobile_number', $user->mobile_number) }}">
+                @if($errors->has('mobile_number'))
+                    <span class="text-danger">{{ $errors->first('mobile_number') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.mobile_number_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>

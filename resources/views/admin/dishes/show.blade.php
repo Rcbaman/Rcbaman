@@ -49,6 +49,14 @@
                             {{ $dish->crusts->name ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.dish.fields.category') }}
+                        </th>
+                        <td>
+                            {{ $dish->category->name ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

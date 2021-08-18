@@ -17,7 +17,7 @@ class DishesApiController extends Controller
     {
         abort_if(Gate::denies('dish_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DishResource(Dish::with(['product', 'ingredients', 'crusts'])->get());
+        return new DishResource(Dish::with(['product', 'ingredients', 'crusts', 'category'])->get());
     }
 
     public function store(StoreDishRequest $request)
@@ -34,7 +34,7 @@ class DishesApiController extends Controller
     {
         abort_if(Gate::denies('dish_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DishResource($dish->load(['product', 'ingredients', 'crusts']));
+        return new DishResource($dish->load(['product', 'ingredients', 'crusts', 'category']));
     }
 
     public function update(UpdateDishRequest $request, Dish $dish)

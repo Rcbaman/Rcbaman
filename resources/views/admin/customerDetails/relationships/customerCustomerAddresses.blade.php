@@ -1,40 +1,46 @@
 <div class="m-3">
-    @can('dish_create')
+    @can('customer_address_create')
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
-                <a class="btn btn-success" href="{{ route('admin.dishes.create') }}">
-                    {{ trans('global.add') }} {{ trans('cruds.dish.title_singular') }}
+                <a class="btn btn-success" href="{{ route('admin.customer-addresses.create') }}">
+                    {{ trans('global.add') }} {{ trans('cruds.customerAddress.title_singular') }}
                 </a>
             </div>
         </div>
     @endcan
     <div class="card">
         <div class="card-header">
-            {{ trans('cruds.dish.title_singular') }} {{ trans('global.list') }}
+            {{ trans('cruds.customerAddress.title_singular') }} {{ trans('global.list') }}
         </div>
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class=" table table-bordered table-striped table-hover datatable datatable-crustsDishes">
+                <table class=" table table-bordered table-striped table-hover datatable datatable-customerCustomerAddresses">
                     <thead>
                         <tr>
                             <th width="10">
 
                             </th>
                             <th>
-                                {{ trans('cruds.dish.fields.id') }}
+                                {{ trans('cruds.customerAddress.fields.id') }}
                             </th>
                             <th>
-                                {{ trans('cruds.dish.fields.product') }}
+                                {{ trans('cruds.customerAddress.fields.customer') }}
                             </th>
                             <th>
-                                {{ trans('cruds.dish.fields.ingredients') }}
+                                {{ trans('cruds.customerAddress.fields.address') }}
                             </th>
                             <th>
-                                {{ trans('cruds.dish.fields.crusts') }}
+                                {{ trans('cruds.customerAddress.fields.address_2') }}
                             </th>
                             <th>
-                                {{ trans('cruds.dish.fields.category') }}
+                                {{ trans('cruds.customerAddress.fields.country') }}
+                            </th>
+                            <th>
+                                {{ trans('cruds.customerAddress.fields.state') }}
+                            </th>
+                            <th>
+                                {{ trans('cruds.customerAddress.fields.zip') }}
                             </th>
                             <th>
                                 &nbsp;
@@ -42,43 +48,47 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($dishes as $key => $dish)
-                            <tr data-entry-id="{{ $dish->id }}">
+                        @foreach($customerAddresses as $key => $customerAddress)
+                            <tr data-entry-id="{{ $customerAddress->id }}">
                                 <td>
 
                                 </td>
                                 <td>
-                                    {{ $dish->id ?? '' }}
+                                    {{ $customerAddress->id ?? '' }}
                                 </td>
                                 <td>
-                                    {{ $dish->product->name ?? '' }}
+                                    {{ $customerAddress->customer->first_name ?? '' }}
                                 </td>
                                 <td>
-                                    @foreach($dish->ingredients as $key => $item)
-                                        <span class="badge badge-info">{{ $item->name }}</span>
-                                    @endforeach
+                                    {{ $customerAddress->address ?? '' }}
                                 </td>
                                 <td>
-                                    {{ $dish->crusts->name ?? '' }}
+                                    {{ $customerAddress->address_2 ?? '' }}
                                 </td>
                                 <td>
-                                    {{ $dish->category->name ?? '' }}
+                                    {{ $customerAddress->country ?? '' }}
                                 </td>
                                 <td>
-                                    @can('dish_show')
-                                        <a class="btn btn-xs btn-primary" href="{{ route('admin.dishes.show', $dish->id) }}">
+                                    {{ $customerAddress->state ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $customerAddress->zip ?? '' }}
+                                </td>
+                                <td>
+                                    @can('customer_address_show')
+                                        <a class="btn btn-xs btn-primary" href="{{ route('admin.customer-addresses.show', $customerAddress->id) }}">
                                             {{ trans('global.view') }}
                                         </a>
                                     @endcan
 
-                                    @can('dish_edit')
-                                        <a class="btn btn-xs btn-info" href="{{ route('admin.dishes.edit', $dish->id) }}">
+                                    @can('customer_address_edit')
+                                        <a class="btn btn-xs btn-info" href="{{ route('admin.customer-addresses.edit', $customerAddress->id) }}">
                                             {{ trans('global.edit') }}
                                         </a>
                                     @endcan
 
-                                    @can('dish_delete')
-                                        <form action="{{ route('admin.dishes.destroy', $dish->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                    @can('customer_address_delete')
+                                        <form action="{{ route('admin.customer-addresses.destroy', $customerAddress->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -100,11 +110,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('dish_delete')
+@can('customer_address_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.dishes.massDestroy') }}",
+    url: "{{ route('admin.customer-addresses.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -135,7 +145,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-crustsDishes:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-customerCustomerAddresses:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
