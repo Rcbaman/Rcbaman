@@ -34,6 +34,9 @@
                                 {{ trans('cruds.dish.fields.crusts') }}
                             </th>
                             <th>
+                                {{ trans('cruds.dish.fields.category') }}
+                            </th>
+                            <th>
                                 &nbsp;
                             </th>
                         </tr>
@@ -57,6 +60,9 @@
                                 </td>
                                 <td>
                                     {{ $dish->crusts->name ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $dish->category->name ?? '' }}
                                 </td>
                                 <td>
                                     @can('dish_show')

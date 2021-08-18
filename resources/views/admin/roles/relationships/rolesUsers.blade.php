@@ -34,6 +34,9 @@
                                 {{ trans('cruds.user.fields.email_verified_at') }}
                             </th>
                             <th>
+                                {{ trans('cruds.user.fields.mobile_number') }}
+                            </th>
+                            <th>
                                 {{ trans('cruds.user.fields.profile_photo') }}
                             </th>
                             <th>
@@ -58,6 +61,9 @@
                                 </td>
                                 <td>
                                     {{ $user->email_verified_at ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $user->mobile_number ?? '' }}
                                 </td>
                                 <td>
                                     @if($user->profile_photo)

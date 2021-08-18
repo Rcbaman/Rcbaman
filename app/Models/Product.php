@@ -47,7 +47,6 @@ class Product extends Model implements HasMedia
         'sale_price',
         'variations',
         'status',
-        'category_id',
         'slug',
         'created_at',
         'updated_at',
@@ -97,11 +96,6 @@ class Product extends Model implements HasMedia
         });
 
         return $files;
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class, 'category_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

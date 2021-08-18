@@ -3,13 +3,13 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.category.title') }}
+        {{ trans('global.show') }} {{ trans('cruds.customerDetail.title') }}
     </div>
 
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.categories.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.customer-details.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
@@ -17,64 +17,64 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.category.fields.id') }}
+                            {{ trans('cruds.customerDetail.fields.id') }}
                         </th>
                         <td>
-                            {{ $category->id }}
+                            {{ $customerDetail->id }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.category.fields.name') }}
+                            {{ trans('cruds.customerDetail.fields.first_name') }}
                         </th>
                         <td>
-                            {{ $category->name }}
+                            {{ $customerDetail->first_name }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.category.fields.description') }}
+                            {{ trans('cruds.customerDetail.fields.last_name') }}
                         </th>
                         <td>
-                            {{ $category->description }}
+                            {{ $customerDetail->last_name }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.category.fields.icon') }}
+                            {{ trans('cruds.customerDetail.fields.email') }}
                         </th>
                         <td>
-                            @if($category->icon)
-                                <a href="{{ $category->icon->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $category->icon->getUrl('thumb') }}">
-                                </a>
-                            @endif
+                            {{ $customerDetail->email }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.category.fields.image') }}
+                            {{ trans('cruds.customerDetail.fields.mobile_number') }}
                         </th>
                         <td>
-                            @if($category->image)
-                                <a href="{{ $category->image->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $category->image->getUrl('thumb') }}">
-                                </a>
-                            @endif
+                            {{ $customerDetail->mobile_number }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.category.fields.slug') }}
+                            {{ trans('cruds.customerDetail.fields.dob') }}
                         </th>
                         <td>
-                            {{ $category->slug }}
+                            {{ $customerDetail->dob }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.customerDetail.fields.gender') }}
+                        </th>
+                        <td>
+                            {{ App\Models\CustomerDetail::GENDER_SELECT[$customerDetail->gender] ?? '' }}
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.categories.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.customer-details.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
@@ -88,14 +88,14 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#category_dishes" role="tab" data-toggle="tab">
-                {{ trans('cruds.dish.title') }}
+            <a class="nav-link" href="#customer_customer_addresses" role="tab" data-toggle="tab">
+                {{ trans('cruds.customerAddress.title') }}
             </a>
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="category_dishes">
-            @includeIf('admin.categories.relationships.categoryDishes', ['dishes' => $category->categoryDishes])
+        <div class="tab-pane" role="tabpanel" id="customer_customer_addresses">
+            @includeIf('admin.customerDetails.relationships.customerCustomerAddresses', ['customerAddresses' => $customerDetail->customerCustomerAddresses])
         </div>
     </div>
 </div>

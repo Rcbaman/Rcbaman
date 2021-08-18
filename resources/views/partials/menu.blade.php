@@ -233,28 +233,43 @@
                         </a>
                     </li>
                 @endcan
-                @can('customer_management_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.customer-managements.index") }}" class="nav-link {{ request()->is("admin/customer-managements") || request()->is("admin/customer-managements/*") ? "active" : "" }}">
-                            <i class="fa-fw nav-icon fas fa-user-friends">
+                @can('customers_management_access')
+                    <li class="nav-item has-treeview {{ request()->is("admin/customer-details*") ? "menu-open" : "" }} {{ request()->is("admin/customer-addresses*") ? "menu-open" : "" }}">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="fa-fw nav-icon fas fa-users-cog">
 
                             </i>
                             <p>
-                                {{ trans('cruds.customerManagement.title') }}
+                                {{ trans('cruds.customersManagement.title') }}
+                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
                             </p>
                         </a>
-                    </li>
-                @endcan
-                @can('address_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.addresses.index") }}" class="nav-link {{ request()->is("admin/addresses") || request()->is("admin/addresses/*") ? "active" : "" }}">
-                            <i class="fa-fw nav-icon fas fa-location-arrow">
+                        <ul class="nav nav-treeview">
+                            @can('customer_detail_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.customer-details.index") }}" class="nav-link {{ request()->is("admin/customer-details") || request()->is("admin/customer-details/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-users">
 
-                            </i>
-                            <p>
-                                {{ trans('cruds.address.title') }}
-                            </p>
-                        </a>
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.customerDetail.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('customer_address_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.customer-addresses.index") }}" class="nav-link {{ request()->is("admin/customer-addresses") || request()->is("admin/customer-addresses/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-location-arrow">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.customerAddress.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
                     </li>
                 @endcan
                 @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
