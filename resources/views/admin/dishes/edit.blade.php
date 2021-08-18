@@ -51,6 +51,18 @@
                 <span class="help-block">{{ trans('cruds.dish.fields.crusts_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="category_id">{{ trans('cruds.dish.fields.category') }}</label>
+                <select class="form-control select2 {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category_id" id="category_id">
+                    @foreach($categories as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('category_id') ? old('category_id') : $dish->category->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('category'))
+                    <span class="text-danger">{{ $errors->first('category') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.dish.fields.category_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

@@ -35,11 +35,37 @@
                             {{ trans('cruds.user.fields.email_verified_at') }}
                         </th>
                         <th>
+                            {{ trans('cruds.user.fields.mobile_number') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.user.fields.profile_photo') }}
                         </th>
                         <th>
                             &nbsp;
                         </th>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,6 +85,9 @@
                             </td>
                             <td>
                                 {{ $user->email_verified_at ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->mobile_number ?? '' }}
                             </td>
                             <td>
                                 @if($user->profile_photo)
@@ -147,6 +176,27 @@
           .columns.adjust();
   });
   
+let visibleColumnsIndexes = null;
+$('.datatable thead').on('input', '.search', function () {
+      let strict = $(this).attr('strict') || false
+      let value = strict && this.value ? "^" + this.value + "$" : this.value
+
+      let index = $(this).parent().index()
+      if (visibleColumnsIndexes !== null) {
+        index = visibleColumnsIndexes[index]
+      }
+
+      table
+        .column(index)
+        .search(value, strict)
+        .draw()
+  });
+table.on('column-visibility.dt', function(e, settings, column, state) {
+      visibleColumnsIndexes = []
+      table.columns(":visible").every(function(colIdx) {
+          visibleColumnsIndexes.push(colIdx);
+      });
+  })
 })
 
 </script>

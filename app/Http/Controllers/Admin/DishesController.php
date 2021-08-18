@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyDishRequest;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
+use App\Models\Category;
 use App\Models\Crust;
 use App\Models\Dish;
 use App\Models\DishIngredient;
@@ -20,7 +21,7 @@ class DishesController extends Controller
     {
         abort_if(Gate::denies('dish_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $dishes = Dish::with(['product', 'ingredients', 'crusts'])->get();
+        $dishes = Dish::with(['product', 'ingredients', 'crusts', 'category'])->get();
 
         $products = Product::get();
 
@@ -28,7 +29,9 @@ class DishesController extends Controller
 
         $crusts = Crust::get();
 
-        return view('admin.dishes.index', compact('dishes', 'products', 'dish_ingredients', 'crusts'));
+        $categories = Category::get();
+
+        return view('admin.dishes.index', compact('dishes', 'products', 'dish_ingredients', 'crusts', 'categories'));
     }
 
     public function create()
@@ -41,7 +44,9 @@ class DishesController extends Controller
 
         $crusts = Crust::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.dishes.create', compact('products', 'ingredients', 'crusts'));
+        $categories = Category::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.dishes.create', compact('products', 'ingredients', 'crusts', 'categories'));
     }
 
     public function store(StoreDishRequest $request)
@@ -62,9 +67,11 @@ class DishesController extends Controller
 
         $crusts = Crust::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $dish->load('product', 'ingredients', 'crusts');
+        $categories = Category::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.dishes.edit', compact('products', 'ingredients', 'crusts', 'dish'));
+        $dish->load('product', 'ingredients', 'crusts', 'category');
+
+        return view('admin.dishes.edit', compact('products', 'ingredients', 'crusts', 'categories', 'dish'));
     }
 
     public function update(UpdateDishRequest $request, Dish $dish)
@@ -79,7 +86,7 @@ class DishesController extends Controller
     {
         abort_if(Gate::denies('dish_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $dish->load('product', 'ingredients', 'crusts');
+        $dish->load('product', 'ingredients', 'crusts', 'category');
 
         return view('admin.dishes.show', compact('dish'));
     }
