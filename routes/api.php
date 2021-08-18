@@ -71,6 +71,9 @@ Route::group(['prefix' => 'v1/hubapp', 'as' => 'api.', 'namespace' => 'Api\V1\Hu
 Route::group(['prefix' => 'v1/hubapp', 'as' => 'api.', 'namespace' => 'Api\V1\Hubapp\Cashier', 'middleware' => ['auth:sanctum']], function () {
     // Cashier Profile Information
     Route::get('profile', [CashierAuthController::class,'Profile']);
+    Route::post('getcustomer', [CashierWithCustomerController::class,'customerExistOrNot']);
     Route::post('addcustomer', [CashierWithCustomerController::class,'addNewCustomer']);
+    Route::post('newaddress', [CashierWithCustomerController::class,'addCustomerAddress']);
+    
     
 });
