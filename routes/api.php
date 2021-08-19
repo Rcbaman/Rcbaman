@@ -54,6 +54,15 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Transactions
     Route::apiResource('transactions', 'TransactionsApiController');
+    
+     // Customer Details
+     Route::apiResource('customer-details', 'CustomerDetailsApiController');
+
+     // Customer Addresses
+     Route::apiResource('customer-addresses', 'CustomerAddressesApiController');
+ 
+     // Tax Profiles
+     Route::apiResource('tax-profiles', 'TaxProfilesApiController');
 
 
     
@@ -76,12 +85,5 @@ Route::group(['prefix' => 'v1/hubapp', 'as' => 'api.', 'namespace' => 'Api\V1\Hu
     Route::post('newaddress', [CashierWithCustomerController::class,'addCustomerAddress']);
     
     
-    // Customer Details
-    Route::apiResource('customer-details', 'CustomerDetailsApiController');
-
-    // Customer Addresses
-    Route::apiResource('customer-addresses', 'CustomerAddressesApiController');
-
-    // Tax Profiles
-    Route::apiResource('tax-profiles', 'TaxProfilesApiController');
+   
 });

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\CustomerDetail;
 use App\Models\CustomerAddress;
+use App\Models\Transaction;
+use App\Models\Order;
 use Validator;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
@@ -94,14 +96,85 @@ class CashierWithCustomerController extends BaseController
     }
 
 
+    /***
+     * Edit Address
+     *  
+     */
+    public function editAddress($id){
+        $address  = CustomerAddress::where('id',$id)->first();
+        if($address):               
+            return $this->sendResponse(new CashierWithCustomerResource($address),'Edit Address.');
+        else:
+            return $this->sendError('Not any address.');
+        endif;
+    }
+
     /**
-     *  Payment 
+     * Update address
+     * 
+     */
+    public function updateAddress(Request $request,$id){
+        $address = CustomerAddress::where('id',$id)->update($request->all());
+        if($address):               
+            return $this->sendResponse(new CashierWithCustomerResource($address),'Update Address Successfully.');
+        else:
+            return $this->sendError('Address not updated.');
+        endif;
+    }
+
+
+    /***
+     * Delete Address
+     * 
+     */
+    public function deleteAddress($id){
+        $address = CustomerAddress::where('id',$id);
+        $address->delete();
+        if($address):               
+            return $this->sendResponse(new CashierWithCustomerResource($address),'Address Deleted Successfully.');
+        else:
+            return $this->sendError('Address not Deleted.');
+        endif;
+    }
+
+
+    /**
+     *  Cashier add Payment 
      * 
      */
 
-    // function addNewPayment(Request $request){
+    function addNewPayment(Request $request){
+        $input = $request->all();
 
-    // }
+        $validator = Validator::make($request->all(), [
+            'method'=>'required',
+            'sub_total'=>'required',
+            'tax' => 'required',
+            'other_charges' => 'required',          
+            'amount' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return $this->sendError('Validation Error.', $validator->errors());       
+        }
+
+        $transaction = Transaction::create($input);
+
+        if($transaction):   
+            // $data = [
+            //     'total_amount' =>$request['amount'],
+            //     'order_status' =>
+            //     'transaction_id' =>$transaction->id
+            // ]; 
+            // $order = Order::create($input);       
+            return $this->sendResponse(new CashierWithCustomerResource($transaction),'Transaction successfully.');
+        else:
+            return $this->sendError('Transaction not successfully.');
+        endif;
+
+
+
+    }
 
 
 }
