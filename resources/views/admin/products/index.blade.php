@@ -50,9 +50,6 @@
                             {{ trans('cruds.product.fields.status') }}
                         </th>
                         <th>
-                            {{ trans('cruds.product.fields.category') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.product.fields.slug') }}
                         </th>
                         <th>
@@ -94,14 +91,6 @@
                                 <option value>{{ trans('global.all') }}</option>
                                 @foreach(App\Models\Product::STATUS_SELECT as $key => $item)
                                     <option value="{{ $item }}">{{ $item }}</option>
-                                @endforeach
-                            </select>
-                        </td>
-                        <td>
-                            <select class="search">
-                                <option value>{{ trans('global.all') }}</option>
-                                @foreach($categories as $key => $item)
-                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -152,9 +141,6 @@
                             </td>
                             <td>
                                 {{ App\Models\Product::STATUS_SELECT[$product->status] ?? '' }}
-                            </td>
-                            <td>
-                                {{ $product->category->name ?? '' }}
                             </td>
                             <td>
                                 {{ $product->slug ?? '' }}

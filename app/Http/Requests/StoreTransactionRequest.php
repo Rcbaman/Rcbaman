@@ -20,10 +20,6 @@ class StoreTransactionRequest extends FormRequest
             'amount' => [
                 'required',
             ],
-            'type' => [
-                'string',
-                'required',
-            ],
             'method' => [
                 'string',
                 'required',

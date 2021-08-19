@@ -97,14 +97,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.product.fields.category') }}
-                        </th>
-                        <td>
-                            {{ $product->category->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.product.fields.slug') }}
                         </th>
                         <td>
@@ -138,8 +130,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#product_dishes" role="tab" data-toggle="tab">
-                {{ trans('cruds.dish.title') }}
+            <a class="nav-link" href="#product_product_ingredients" role="tab" data-toggle="tab">
+                {{ trans('cruds.productIngredient.title') }}
             </a>
         </li>
     </ul>
@@ -150,8 +142,8 @@
         <div class="tab-pane" role="tabpanel" id="product_product_crust_sizes">
             @includeIf('admin.products.relationships.productProductCrustSizes', ['productCrustSizes' => $product->productProductCrustSizes])
         </div>
-        <div class="tab-pane" role="tabpanel" id="product_dishes">
-            @includeIf('admin.products.relationships.productDishes', ['dishes' => $product->productDishes])
+        <div class="tab-pane" role="tabpanel" id="product_product_ingredients">
+            @includeIf('admin.products.relationships.productProductIngredients', ['productIngredients' => $product->productProductIngredients])
         </div>
     </div>
 </div>
