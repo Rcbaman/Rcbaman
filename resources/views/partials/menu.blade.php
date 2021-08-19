@@ -72,7 +72,7 @@
                     </li>
                 @endcan
                 @can('product_management_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/products*") ? "menu-open" : "" }} {{ request()->is("admin/categories*") ? "menu-open" : "" }} {{ request()->is("admin/ingredients*") ? "menu-open" : "" }} {{ request()->is("admin/variations-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/crusts*") ? "menu-open" : "" }} {{ request()->is("admin/product-variation-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/product-crust-sizes*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/products*") ? "menu-open" : "" }} {{ request()->is("admin/categories*") ? "menu-open" : "" }} {{ request()->is("admin/ingredients*") ? "menu-open" : "" }} {{ request()->is("admin/variations-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/crusts*") ? "menu-open" : "" }} {{ request()->is("admin/product-variation-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/product-crust-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/product-ingredients*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-archive">
 
@@ -167,41 +167,14 @@
                                     </a>
                                 </li>
                             @endcan
-                        </ul>
-                    </li>
-                @endcan
-                @can('menu_management_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/dishes*") ? "menu-open" : "" }} {{ request()->is("admin/dish-ingredients*") ? "menu-open" : "" }}">
-                        <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="fa-fw nav-icon fas fa-utensils">
-
-                            </i>
-                            <p>
-                                {{ trans('cruds.menuManagement.title') }}
-                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            @can('dish_access')
+                            @can('product_ingredient_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.dishes.index") }}" class="nav-link {{ request()->is("admin/dishes") || request()->is("admin/dishes/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-stroopwafel">
+                                    <a href="{{ route("admin.product-ingredients.index") }}" class="nav-link {{ request()->is("admin/product-ingredients") || request()->is("admin/product-ingredients/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-umbrella">
 
                                         </i>
                                         <p>
-                                            {{ trans('cruds.dish.title') }}
-                                        </p>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('dish_ingredient_access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.dish-ingredients.index") }}" class="nav-link {{ request()->is("admin/dish-ingredients") || request()->is("admin/dish-ingredients/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-cookie">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.dishIngredient.title') }}
+                                            {{ trans('cruds.productIngredient.title') }}
                                         </p>
                                     </a>
                                 </li>

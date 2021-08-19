@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Ingredient extends Model
+class ProductIngredient extends Model
 {
     use SoftDeletes;
     use HasFactory;
 
-    public $table = 'ingredients';
+    public $table = 'product_ingredients';
 
     protected $dates = [
         'created_at',
@@ -21,16 +21,20 @@ class Ingredient extends Model
     ];
 
     protected $fillable = [
-        'name',
-        'slug',
+        'product_id',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    public function ingredientsProductIngredients()
+    public function product()
     {
-        return $this->belongsToMany(ProductIngredient::class);
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+
+    public function ingredients()
+    {
+        return $this->belongsToMany(Ingredient::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

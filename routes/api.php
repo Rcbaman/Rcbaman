@@ -43,47 +43,18 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Product Crust Size
     Route::apiResource('product-crust-sizes', 'ProductCrustSizeApiController');
 
-    // Dishes
-    Route::apiResource('dishes', 'DishesApiController');
-
-    // Dish Ingredients
-    Route::apiResource('dish-ingredients', 'DishIngredientsApiController');
-
     // Orders
     Route::apiResource('orders', 'OrdersApiController');
 
     // Transactions
     Route::apiResource('transactions', 'TransactionsApiController');
-    
-     // Customer Details
-     Route::apiResource('customer-details', 'CustomerDetailsApiController');
 
-     // Customer Addresses
-     Route::apiResource('customer-addresses', 'CustomerAddressesApiController');
- 
-     // Tax Profiles
-     Route::apiResource('tax-profiles', 'TaxProfilesApiController');
+    // Customer Details
+    Route::apiResource('customer-details', 'CustomerDetailsApiController');
 
+    // Customer Addresses
+    Route::apiResource('customer-addresses', 'CustomerAddressesApiController');
 
-    
-});
-
- //Cashier Login & Registration
-Route::group(['prefix' => 'v1/hubapp', 'as' => 'api.', 'namespace' => 'Api\V1\Hubapp\Cashier'], function (){
-    Route::post('register', [CashierAuthController::class,'Register']);
-    Route::post('login', [CashierAuthController::class,'Login']);
-    Route::get('categories', [CashierQuickController::class,'categoriesList']);
-    Route::get('category/{id}/dishes', [CashierQuickController::class,'CategoriesByDishes']);
-
-});
-
-Route::group(['prefix' => 'v1/hubapp', 'as' => 'api.', 'namespace' => 'Api\V1\Hubapp\Cashier', 'middleware' => ['auth:sanctum']], function () {
-    // Cashier Profile Information
-    Route::get('profile', [CashierAuthController::class,'Profile']);
-    Route::post('getcustomer', [CashierWithCustomerController::class,'customerExistOrNot']);
-    Route::post('addcustomer', [CashierWithCustomerController::class,'addNewCustomer']);
-    Route::post('newaddress', [CashierWithCustomerController::class,'addCustomerAddress']);
-    
-    
-   
+    // Tax Profiles
+    Route::apiResource('tax-profiles', 'TaxProfilesApiController');
 });

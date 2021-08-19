@@ -4,15 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTaxProfilesTable extends Migration
+class CreateProductVariationSizesTable extends Migration
 {
     public function up()
     {
-        Schema::create('tax_profiles', function (Blueprint $table) {
+        Schema::create('product_variation_sizes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->string('type')->nullable();
-            $table->string('value')->nullable();
+            $table->decimal('amount', 15, 2);
             $table->timestamps();
             $table->softDeletes();
         });
