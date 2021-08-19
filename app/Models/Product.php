@@ -47,7 +47,6 @@ class Product extends Model implements HasMedia
         'sale_price',
         'variations',
         'status',
-        'category_id',
         'slug',
         'created_at',
         'updated_at',
@@ -70,9 +69,9 @@ class Product extends Model implements HasMedia
         return $this->hasMany(ProductCrustSize::class, 'product_id', 'id');
     }
 
-    public function productDishes()
+    public function productProductIngredients()
     {
-        return $this->hasMany(Dish::class, 'product_id', 'id');
+        return $this->hasMany(ProductIngredient::class, 'product_id', 'id');
     }
 
     public function getImageAttribute()
@@ -97,11 +96,6 @@ class Product extends Model implements HasMedia
         });
 
         return $files;
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class, 'category_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)
