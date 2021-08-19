@@ -161,12 +161,12 @@ class CashierWithCustomerController extends BaseController
         $transaction = Transaction::create($input);
 
         if($transaction):   
-            // $data = [
-            //     'total_amount' =>$request['amount'],
-            //     'order_status' =>
-            //     'transaction_id' =>$transaction->id
-            // ]; 
-            // $order = Order::create($input);       
+            $data = [
+                'total_amount' =>$request['amount'],
+                'order_status' =>'Pending',
+                'transaction_id' =>$transaction->id
+            ]; 
+            $order = Order::create($input);       
             return $this->sendResponse(new CashierWithCustomerResource($transaction),'Transaction successfully.');
         else:
             return $this->sendError('Transaction not successfully.');
