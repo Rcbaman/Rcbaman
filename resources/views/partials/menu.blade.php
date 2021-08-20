@@ -71,7 +71,7 @@
                             @can('log_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.logs.index") }}" class="nav-link {{ request()->is("admin/logs") || request()->is("admin/logs/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-cogs">
+                                        <i class="fa-fw nav-icon fas fa-fingerprint">
 
                                         </i>
                                         <p>
