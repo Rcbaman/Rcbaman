@@ -1,4 +1,8 @@
 <?php
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Permissions
@@ -52,3 +56,13 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Logs
     Route::apiResource('logs', 'LogsApiController');
 });
+
+
+
+
+// authentication
+Route::prefix('api')
+->middleware('api')
+->namespace('Api\V1\Hubapp\Cashier')
+->group(base_path('routes/api/hubapp/index.php'));
+
