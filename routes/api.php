@@ -1,9 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-
-
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Permissions
     Route::apiResource('permissions', 'PermissionsApiController');
@@ -52,7 +48,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Tax Profiles
     Route::apiResource('tax-profiles', 'TaxProfilesApiController');
+
+    // Logs
+    Route::apiResource('logs', 'LogsApiController');
 });
-
-
- 

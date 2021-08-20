@@ -82,6 +82,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Product Ingredients
     Route::delete('product-ingredients/destroy', 'ProductIngredientsController@massDestroy')->name('product-ingredients.massDestroy');
     Route::resource('product-ingredients', 'ProductIngredientsController');
+
+    // Logs
+    Route::delete('logs/destroy', 'LogsController@massDestroy')->name('logs.massDestroy');
+    Route::resource('logs', 'LogsController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

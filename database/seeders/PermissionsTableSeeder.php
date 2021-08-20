@@ -352,6 +352,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 86,
+                'title' => 'log_create',
+            ],
+            [
+                'id'    => 87,
+                'title' => 'log_edit',
+            ],
+            [
+                'id'    => 88,
+                'title' => 'log_show',
+            ],
+            [
+                'id'    => 89,
+                'title' => 'log_delete',
+            ],
+            [
+                'id'    => 90,
+                'title' => 'log_access',
+            ],
+            [
+                'id'    => 91,
                 'title' => 'profile_password_edit',
             ],
         ];
