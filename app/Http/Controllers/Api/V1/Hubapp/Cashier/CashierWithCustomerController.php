@@ -8,11 +8,11 @@ use App\Http\Controllers\Api\V1\Hubapp\Cashier\BaseController as BaseController;
 use App\Http\Resources\Hubapp\Cashier\CashierWithCustomerResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Models\CustomerDetail;
 use App\Models\CustomerAddress;
 use App\Models\Transaction;
 use App\Models\Order;
-use Validator;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 
@@ -46,12 +46,12 @@ class CashierWithCustomerController extends BaseController
     public function addNewCustomer(Request $request){
           
         $validator = Validator::make($request->all(), [
-            'first_name'=>'required',
-            'last_name'=>'required',
-            'email' => 'required|email|unique:customer_details',
+            'first_name'    =>'required',
+            'last_name'     =>'required',
+            'email'         => 'required|email|unique:customer_details',
             'mobile_number' => 'required|min:10|max:10|unique:customer_details,mobile_number',          
-            'dob' => 'required',
-            'gender' => 'required',
+            'dob'           => 'required',
+            'gender'        => 'required',
         ]);
 
         if($validator->fails()){
@@ -75,11 +75,11 @@ class CashierWithCustomerController extends BaseController
     Public function addCustomerAddress(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'address'=>'required',
+            'address'  =>'required',
             'address_2'=>'required',
-            'country' => 'required',
-            'state' => 'required',          
-            'zip' => 'required',
+            'country'  => 'required',
+            'state'    => 'required',          
+            'zip'      => 'required',
         ]);
 
         if($validator->fails()){
@@ -100,8 +100,8 @@ class CashierWithCustomerController extends BaseController
      * Edit Address
      *  
      */
-    public function editAddress($id){
-        $address  = CustomerAddress::where('id',$id)->first();
+    public function editCustomerAddress($id){
+        $address  = CustomerAddress::find($id);
         if($address):               
             return $this->sendResponse(new CashierWithCustomerResource($address),'Edit Address.');
         else:
@@ -113,8 +113,9 @@ class CashierWithCustomerController extends BaseController
      * Update address
      * 
      */
-    public function updateAddress(Request $request,$id){
-        $address = CustomerAddress::where('id',$id)->update($request->all());
+    public function updateCustomerAddress(Request $request,$id){
+        $address = CustomerAddress::findOrFail($id);
+        $address->update($request->all());
         if($address):               
             return $this->sendResponse(new CashierWithCustomerResource($address),'Update Address Successfully.');
         else:
@@ -127,8 +128,9 @@ class CashierWithCustomerController extends BaseController
      * Delete Address
      * 
      */
-    public function deleteAddress($id){
-        $address = CustomerAddress::where('id',$id);
+    public function deleteCustomerAddress(Request $request, $id){
+
+        $address = CustomerAddress::findOrFail($id);
         $address->delete();
         if($address):               
             return $this->sendResponse(new CashierWithCustomerResource($address),'Address Deleted Successfully.');
@@ -147,11 +149,11 @@ class CashierWithCustomerController extends BaseController
         $input = $request->all();
 
         $validator = Validator::make($request->all(), [
-            'method'=>'required',
-            'sub_total'=>'required',
-            'tax' => 'required',
-            'other_charges' => 'required',          
-            'amount' => 'required',
+            'method'       =>'required',
+            'sub_total'    =>'required',
+            'tax'          => 'required',
+            'other_charges'=> 'required',          
+            'amount'       => 'required',
         ]);
 
         if($validator->fails()){
@@ -162,19 +164,22 @@ class CashierWithCustomerController extends BaseController
 
         if($transaction):   
             $data = [
-                'total_amount' =>$request['amount'],
-                'order_status' =>'Pending',
-                'transaction_id' =>$transaction->id
+                'total_amount'  =>$request['amount'],
+                'order_status'  =>'pending',
+                'transaction_id'=>$transaction->id
             ]; 
             $order = Order::create($input);       
             return $this->sendResponse(new CashierWithCustomerResource($transaction),'Transaction successfully.');
         else:
             return $this->sendError('Transaction not successfully.');
         endif;
-
-
-
     }
 
+
+
+  
+
+    
+    
 
 }

@@ -3,11 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Api\V1\Hubapp\Cashier\CashierAuthController;
-use App\Http\Controllers\Api\V1\Hubapp\Cashier\CashierQuickController;
-use App\Http\Controllers\Api\V1\Hubapp\Cashier\CashierWithCustomerController;
-
-
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Permissions
@@ -58,3 +53,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Tax Profiles
     Route::apiResource('tax-profiles', 'TaxProfilesApiController');
 });
+
+
+ 

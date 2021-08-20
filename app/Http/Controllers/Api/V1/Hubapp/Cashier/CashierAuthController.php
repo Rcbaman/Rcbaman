@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Resources\Hubapp\Cashier\CashierAuthResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Models\User;
-use Validator;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 
