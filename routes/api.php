@@ -59,10 +59,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
 
 
-
 // authentication
-Route::prefix('api')
-->middleware('api')
-->namespace('Api\V1\Hubapp\Cashier')
+Route::middleware('api')
+->namespace('App\Http\Controllers')
 ->group(base_path('routes/api/hubapp/index.php'));
 
