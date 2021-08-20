@@ -28,9 +28,9 @@ class Ingredient extends Model
         'deleted_at',
     ];
 
-    public function ingredientsDishes()
+    public function ingredientsProductIngredients()
     {
-        return $this->belongsToMany(Dish::class);
+        return $this->belongsToMany(ProductIngredient::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

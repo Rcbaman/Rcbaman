@@ -216,138 +216,162 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 52,
-                'title' => 'dish_create',
-            ],
-            [
-                'id'    => 53,
-                'title' => 'dish_edit',
-            ],
-            [
-                'id'    => 54,
-                'title' => 'dish_show',
-            ],
-            [
-                'id'    => 55,
-                'title' => 'dish_delete',
-            ],
-            [
-                'id'    => 56,
-                'title' => 'dish_access',
-            ],
-            [
-                'id'    => 57,
-                'title' => 'dish_ingredient_create',
-            ],
-            [
-                'id'    => 58,
-                'title' => 'dish_ingredient_edit',
-            ],
-            [
-                'id'    => 59,
-                'title' => 'dish_ingredient_show',
-            ],
-            [
-                'id'    => 60,
-                'title' => 'dish_ingredient_delete',
-            ],
-            [
-                'id'    => 61,
-                'title' => 'dish_ingredient_access',
-            ],
-            [
-                'id'    => 62,
                 'title' => 'order_create',
             ],
             [
-                'id'    => 63,
+                'id'    => 53,
                 'title' => 'order_edit',
             ],
             [
-                'id'    => 64,
+                'id'    => 54,
                 'title' => 'order_show',
             ],
             [
-                'id'    => 65,
+                'id'    => 55,
                 'title' => 'order_delete',
             ],
             [
-                'id'    => 66,
+                'id'    => 56,
                 'title' => 'order_access',
             ],
             [
-                'id'    => 67,
+                'id'    => 57,
                 'title' => 'product_management_access',
             ],
             [
-                'id'    => 68,
+                'id'    => 58,
                 'title' => 'menu_management_access',
             ],
             [
-                'id'    => 69,
+                'id'    => 59,
                 'title' => 'transaction_create',
             ],
             [
-                'id'    => 70,
+                'id'    => 60,
                 'title' => 'transaction_edit',
             ],
             [
-                'id'    => 71,
+                'id'    => 61,
                 'title' => 'transaction_show',
             ],
             [
-                'id'    => 72,
+                'id'    => 62,
                 'title' => 'transaction_delete',
             ],
             [
-                'id'    => 73,
+                'id'    => 63,
                 'title' => 'transaction_access',
             ],
             [
-                'id'    => 74,
+                'id'    => 64,
                 'title' => 'customer_detail_create',
             ],
             [
-                'id'    => 75,
+                'id'    => 65,
                 'title' => 'customer_detail_edit',
             ],
             [
-                'id'    => 76,
+                'id'    => 66,
                 'title' => 'customer_detail_show',
             ],
             [
-                'id'    => 77,
+                'id'    => 67,
                 'title' => 'customer_detail_delete',
             ],
             [
-                'id'    => 78,
+                'id'    => 68,
                 'title' => 'customer_detail_access',
             ],
             [
-                'id'    => 79,
+                'id'    => 69,
                 'title' => 'customers_management_access',
             ],
             [
-                'id'    => 80,
+                'id'    => 70,
                 'title' => 'customer_address_create',
             ],
             [
-                'id'    => 81,
+                'id'    => 71,
                 'title' => 'customer_address_edit',
             ],
             [
-                'id'    => 82,
+                'id'    => 72,
                 'title' => 'customer_address_show',
             ],
             [
-                'id'    => 83,
+                'id'    => 73,
                 'title' => 'customer_address_delete',
             ],
             [
-                'id'    => 84,
+                'id'    => 74,
                 'title' => 'customer_address_access',
             ],
             [
+                'id'    => 75,
+                'title' => 'accounts_management_access',
+            ],
+            [
+                'id'    => 76,
+                'title' => 'tax_profile_create',
+            ],
+            [
+                'id'    => 77,
+                'title' => 'tax_profile_edit',
+            ],
+            [
+                'id'    => 78,
+                'title' => 'tax_profile_show',
+            ],
+            [
+                'id'    => 79,
+                'title' => 'tax_profile_delete',
+            ],
+            [
+                'id'    => 80,
+                'title' => 'tax_profile_access',
+            ],
+            [
+                'id'    => 81,
+                'title' => 'product_ingredient_create',
+            ],
+            [
+                'id'    => 82,
+                'title' => 'product_ingredient_edit',
+            ],
+            [
+                'id'    => 83,
+                'title' => 'product_ingredient_show',
+            ],
+            [
+                'id'    => 84,
+                'title' => 'product_ingredient_delete',
+            ],
+            [
                 'id'    => 85,
+                'title' => 'product_ingredient_access',
+            ],
+            [
+                'id'    => 86,
+                'title' => 'log_create',
+            ],
+            [
+                'id'    => 87,
+                'title' => 'log_edit',
+            ],
+            [
+                'id'    => 88,
+                'title' => 'log_show',
+            ],
+            [
+                'id'    => 89,
+                'title' => 'log_delete',
+            ],
+            [
+                'id'    => 90,
+                'title' => 'log_access',
+            ],
+            [
+                'id'    => 91,
                 'title' => 'profile_password_edit',
             ],
         ];
