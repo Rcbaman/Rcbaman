@@ -59,14 +59,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('product-crust-sizes/destroy', 'ProductCrustSizeController@massDestroy')->name('product-crust-sizes.massDestroy');
     Route::resource('product-crust-sizes', 'ProductCrustSizeController');
 
-    // Dishes
-    Route::delete('dishes/destroy', 'DishesController@massDestroy')->name('dishes.massDestroy');
-    Route::resource('dishes', 'DishesController');
-
-    // Dish Ingredients
-    Route::delete('dish-ingredients/destroy', 'DishIngredientsController@massDestroy')->name('dish-ingredients.massDestroy');
-    Route::resource('dish-ingredients', 'DishIngredientsController');
-
     // Orders
     Route::delete('orders/destroy', 'OrdersController@massDestroy')->name('orders.massDestroy');
     Route::resource('orders', 'OrdersController');
@@ -82,6 +74,22 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Customer Addresses
     Route::delete('customer-addresses/destroy', 'CustomerAddressesController@massDestroy')->name('customer-addresses.massDestroy');
     Route::resource('customer-addresses', 'CustomerAddressesController');
+
+    // Tax Profiles
+    Route::delete('tax-profiles/destroy', 'TaxProfilesController@massDestroy')->name('tax-profiles.massDestroy');
+    Route::resource('tax-profiles', 'TaxProfilesController');
+
+    // Product Ingredients
+    Route::delete('product-ingredients/destroy', 'ProductIngredientsController@massDestroy')->name('product-ingredients.massDestroy');
+    Route::resource('product-ingredients', 'ProductIngredientsController');
+
+    // Logs
+    Route::delete('logs/destroy', 'LogsController@massDestroy')->name('logs.massDestroy');
+    Route::resource('logs', 'LogsController');
+
+    // Settings
+    Route::delete('settings/destroy', 'SettingsController@massDestroy')->name('settings.massDestroy');
+    Route::resource('settings', 'SettingsController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

@@ -26,16 +26,22 @@
                             {{ trans('cruds.transaction.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.transaction.fields.amount') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.transaction.fields.status') }}
                         </th>
                         <th>
-                            {{ trans('cruds.transaction.fields.type') }}
+                            {{ trans('cruds.transaction.fields.method') }}
                         </th>
                         <th>
-                            {{ trans('cruds.transaction.fields.method') }}
+                            {{ trans('cruds.transaction.fields.sub_total') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.transaction.fields.tax') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.transaction.fields.other_charges') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.transaction.fields.amount') }}
                         </th>
                         <th>
                             &nbsp;
@@ -48,15 +54,21 @@
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
                             <select class="search" strict="true">
                                 <option value>{{ trans('global.all') }}</option>
                                 @foreach(App\Models\Transaction::STATUS_SELECT as $key => $item)
                                     <option value="{{ $item }}">{{ $item }}</option>
                                 @endforeach
                             </select>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -78,16 +90,22 @@
                                 {{ $transaction->id ?? '' }}
                             </td>
                             <td>
-                                {{ $transaction->amount ?? '' }}
-                            </td>
-                            <td>
                                 {{ App\Models\Transaction::STATUS_SELECT[$transaction->status] ?? '' }}
                             </td>
                             <td>
-                                {{ $transaction->type ?? '' }}
+                                {{ $transaction->method ?? '' }}
                             </td>
                             <td>
-                                {{ $transaction->method ?? '' }}
+                                {{ $transaction->sub_total ?? '' }}
+                            </td>
+                            <td>
+                                {{ $transaction->tax ?? '' }}
+                            </td>
+                            <td>
+                                {{ $transaction->other_charges ?? '' }}
+                            </td>
+                            <td>
+                                {{ $transaction->amount ?? '' }}
                             </td>
                             <td>
                                 @can('transaction_show')
