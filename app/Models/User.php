@@ -116,4 +116,16 @@ class User extends Authenticatable implements HasMedia
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    /**
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return ucfirst("{$this->first_name} {$this->last_name}");
+    }
+
+
 }
