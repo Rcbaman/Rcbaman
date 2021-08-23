@@ -22,9 +22,9 @@ class CashierQuickController extends BaseController
         $category = Category::all();
 
         if(count($category) > 0):
-            return $this->sendResponse(new CashierQuickResource($category),'Catergory List');
+            return $this->sendResponse(true,'CategoryList','CategoryList','Catergory List',new CashierQuickResource($category),200);
         else:
-            return $this->sendError('No Catergory Exist.');
+            return $this->sendResponse(false,'CategoryList','CategoryList','No Catergory Exist',new CashierQuickResource($category));
         endif;
     }
 
@@ -37,9 +37,9 @@ class CashierQuickController extends BaseController
         $dishs = Dish::with(['product','ingredients','crusts','categories'])->where('category_id',$category_id)->get();
 
         if(count($dishs) > 0):
-            return $this->sendResponse(new CashierQuickResource($dishs),'Pizza menu List',200);
+            return $this->sendResponse(true,'pizzamenuList','PizzaList','Pizza menu List',new CashierQuickResource($dishs),200);
         else:
-            return $this->sendError('No Pizza menu.');
+            return $this->sendResponse(false,'pizzamenuList','PizzaList','No Pizza menu',[]);
         endif;
     }
 

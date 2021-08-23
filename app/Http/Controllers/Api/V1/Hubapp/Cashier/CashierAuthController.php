@@ -33,7 +33,7 @@ class CashierAuthController extends BaseController
         ]);
    
         if($validator->fails()){
-            return $this->sendResponse(false,'UserRegistration','Registration Validation error','',new CashierAuthResource($validator->errors()));     
+            return $this->sendResponse(false,'UserRegistration','Registration Validation error','',new CashierAuthResource($validator->errors()),404);     
         }
    
         $input = $request->all();

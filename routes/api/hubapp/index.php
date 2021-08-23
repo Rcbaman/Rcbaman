@@ -27,3 +27,8 @@ Route::middleware('api')
  Route::middleware('api')
  ->namespace('App\Http\Controllers')
  ->group(base_path('routes/api/hubapp/logs.php'));
+
+  // App Synchronize
+  Route::middleware('api')
+  ->namespace('App\Http\Controllers')
+  ->group(base_path('routes/api/hubapp/appsynchronize.php'));

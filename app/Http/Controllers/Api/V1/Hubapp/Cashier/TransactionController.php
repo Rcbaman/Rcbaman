@@ -3,29 +3,18 @@
 namespace App\Http\Controllers\Api\V1\Hubapp\Cashier;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Api\V1\Hubapp\Cashier\BaseController as BaseController;
 use Illuminate\Http\Request;
-use App\Http\Resources\Hubapp\Cashier\CashierLogResource;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use App\Models\Log;
 
-class CashierLogsController extends BaseController
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($user_id)
+    public function index()
     {
-        $logs = Log::with('user')->where('user_id',$user_id)->all();
-        if(count($logs) > 0):
-            return $this->sendResponse(true,'UserLogs','loglist','User Logs List',new CashierLogResource($logs),200);
-        else:
-            return $this->sendResponse(false,'UserLogs','loglist','No logs Exist.',[]);
-        endif;
+        //
     }
 
     /**
@@ -35,7 +24,7 @@ class CashierLogsController extends BaseController
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -46,16 +35,7 @@ class CashierLogsController extends BaseController
      */
     public function store(Request $request)
     {
-        $inputs = $request->all();
-        $inputs['action'] ='login';
-        $inputs['ip'] = $request->ip();
-        $createLog = Log::create($inputs);
-
-        if($createLog):
-            return $this->sendResponse(true,'CreateLogs','storelogs','Logs created Suucccessfully',new CashierLogResource($createLog),200);
-        else:
-            return $this->sendResponse(false,'CreateLogs','storelogs','logs Not Created',[]);
-        endif;
+        //
     }
 
     /**

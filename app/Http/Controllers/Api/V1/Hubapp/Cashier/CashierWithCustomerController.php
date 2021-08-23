@@ -32,9 +32,9 @@ class CashierWithCustomerController extends BaseController
             })->get();
         
         if($existCustomer):
-            return $this->sendResponse(new CashierWithCustomerResource($existCustomer),'Customer has already account.');
+            return $this->sendResponse(true,'customerAlreadyExist','checkCustomer','Customer has already account.',new CashierWithCustomerResource($existCustomer),200);
         else:
-            return $this->sendError('Customer has not any account.');
+            return $this->sendResponse(false,'customerAlreadyExist','checkCustomer','Customer has not any account.',[]);
         endif;
 
     }
@@ -55,15 +55,15 @@ class CashierWithCustomerController extends BaseController
         ]);
 
         if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());       
+            return $this->sendResponse(false,'Customerregistration','Registration Validation error','',new CashierWithCustomerResource($validator->errors()),404);
         }
 
         $input = $request->all();
         $newCustomer = CustomerDetail::create($input);
-        if($newCustomer):               
-            return $this->sendResponse(new CashierWithCustomerResource($newCustomer),'Customer register successfully.');
+        if($newCustomer):
+            return $this->sendResponse(true,'customerRegistration','registrationSuccessfully','Customer register successfully.',new CashierWithCustomerResource($newCustomer),200);        
         else:
-            return $this->sendError('Customer not insert.', ['error'=>'Something wrong'], 404);
+            return $this->sendResponse(false,'customerRegistration','registrationError','Customer not register successfully.');
         endif;
     }
 
@@ -83,15 +83,15 @@ class CashierWithCustomerController extends BaseController
         ]);
 
         if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());       
+            return $this->sendResponse(false,'newAddress','Address Validation error','',new CashierWithCustomerResource($validator->errors()),404);    
         }
 
         $input = $request->all();
         $newaddress = CustomerAddress::create($input);
-        if($newaddress):               
-            return $this->sendResponse(new CashierWithCustomerResource($newaddress),'New Address added successfully.');
+        if($newaddress):
+            return $this->sendResponse(true,'newAddress','addressAddedSuccessfully','New Address added successfully.',new CashierWithCustomerResource($newaddress),200);                
         else:
-            return $this->sendError('New Address not added.');
+            return $this->sendResponse(false,'newAddress','newAddressError','New Address not added.'[]);
         endif;
     }
 
@@ -102,10 +102,10 @@ class CashierWithCustomerController extends BaseController
      */
     public function editCustomerAddress($id){
         $address  = CustomerAddress::find($id);
-        if($address):               
-            return $this->sendResponse(new CashierWithCustomerResource($address),'Edit Address.');
+        if($address):
+            return $this->sendResponse(true,'editAddress','AddressEditSuccessfully','Edit Address.',new CashierWithCustomerResource($address),200);               
         else:
-            return $this->sendError('Not any address.');
+            return $this->sendResponse(false,'editAddress','AddressEditError','Edit Address.',[]);  
         endif;
     }
 
@@ -116,10 +116,10 @@ class CashierWithCustomerController extends BaseController
     public function updateCustomerAddress(Request $request,$id){
         $address = CustomerAddress::findOrFail($id);
         $address->update($request->all());
-        if($address):               
-            return $this->sendResponse(new CashierWithCustomerResource($address),'Update Address Successfully.');
+        if($address):
+            return $this->sendResponse(true,'updateAddress','AddressupdatedSuccessfully','Address Updated Successfully.',new CashierWithCustomerResource($address),200);            
         else:
-            return $this->sendError('Address not updated.');
+            return $this->sendResponse(false,'updateAddress','AddressupdatedError','Address not updated');
         endif;
     }
 
@@ -132,10 +132,10 @@ class CashierWithCustomerController extends BaseController
 
         $address = CustomerAddress::findOrFail($id);
         $address->delete();
-        if($address):               
-            return $this->sendResponse(new CashierWithCustomerResource($address),'Address Deleted Successfully.');
+        if($address):
+            return $this->sendResponse(true,'deleteAddress','AddressdeleteSuccessfully','Address Deleted Successfully.',new CashierWithCustomerResource($address),200);           
         else:
-            return $this->sendError('Address not Deleted.');
+            return $this->sendResponse(true,'deleteAddress','AddressNotdelete','Address not Deleted.',[]); 
         endif;
     }
 
@@ -157,7 +157,7 @@ class CashierWithCustomerController extends BaseController
         ]);
 
         if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());       
+            return $this->sendResponse(false,'payment Error','Payment validation Error ','',new CashierWithCustomerResource($validator->errors()),404);       
         }
 
         $transaction = Transaction::create($input);
@@ -168,10 +168,10 @@ class CashierWithCustomerController extends BaseController
                 'order_status'  =>'pending',
                 'transaction_id'=>$transaction->id
             ]; 
-            $order = Order::create($input);       
-            return $this->sendResponse(new CashierWithCustomerResource($transaction),'Transaction successfully.');
+            $order = Order::create($input);
+            return $this->sendResponse(true,'transaction','NewTransaction','Transaction successfully.',new CashierWithCustomerResource($order),200);     
         else:
-            return $this->sendError('Transaction not successfully.');
+            return $this->sendError(false,'transaction','NewTransaction','Transaction not successfully.');
         endif;
     }
 
