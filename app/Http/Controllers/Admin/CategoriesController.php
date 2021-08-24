@@ -92,7 +92,7 @@ class CategoriesController extends Controller
     {
         abort_if(Gate::denies('category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $category->load('categoryDishes');
+        $category->load('categoryProductCategories');
 
         return view('admin.categories.show', compact('category'));
     }
