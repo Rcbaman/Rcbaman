@@ -44,6 +44,38 @@
                 <span class="help-block">{{ trans('cruds.order.fields.transaction_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="customers">{{ trans('cruds.order.fields.customer') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('customers') ? 'is-invalid' : '' }}" name="customers[]" id="customers" multiple required>
+                    @foreach($customers as $id => $customer)
+                        <option value="{{ $id }}" {{ (in_array($id, old('customers', [])) || $order->customers->contains($id)) ? 'selected' : '' }}>{{ $customer }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('customers'))
+                    <span class="text-danger">{{ $errors->first('customers') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.order.fields.customer_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="ordertakenbies">{{ trans('cruds.order.fields.ordertakenby') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('ordertakenbies') ? 'is-invalid' : '' }}" name="ordertakenbies[]" id="ordertakenbies" multiple required>
+                    @foreach($ordertakenbies as $id => $ordertakenby)
+                        <option value="{{ $id }}" {{ (in_array($id, old('ordertakenbies', [])) || $order->ordertakenbies->contains($id)) ? 'selected' : '' }}>{{ $ordertakenby }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('ordertakenbies'))
+                    <span class="text-danger">{{ $errors->first('ordertakenbies') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.order.fields.ordertakenby_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
