@@ -35,6 +35,12 @@
                             {{ trans('cruds.order.fields.transaction') }}
                         </th>
                         <th>
+                            {{ trans('cruds.order.fields.customer') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.order.fields.ordertakenby') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -64,6 +70,22 @@
                             </select>
                         </td>
                         <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($customer_details as $key => $item)
+                                    <option value="{{ $item->first_name }}">{{ $item->first_name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($users as $key => $item)
+                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
                         </td>
                     </tr>
                 </thead>
@@ -84,6 +106,16 @@
                             </td>
                             <td>
                                 {{ $order->transaction->amount ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($order->customers as $key => $item)
+                                    <span class="badge badge-info">{{ $item->first_name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach($order->ordertakenbies as $key => $item)
+                                    <span class="badge badge-info">{{ $item->name }}</span>
+                                @endforeach
                             </td>
                             <td>
                                 @can('order_show')
