@@ -122,10 +122,18 @@
                 {{ trans('cruds.log.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#ordertakenby_orders" role="tab" data-toggle="tab">
+                {{ trans('cruds.order.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="user_logs">
             @includeIf('admin.users.relationships.userLogs', ['logs' => $user->userLogs])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="ordertakenby_orders">
+            @includeIf('admin.users.relationships.ordertakenbyOrders', ['orders' => $user->ordertakenbyOrders])
         </div>
     </div>
 </div>

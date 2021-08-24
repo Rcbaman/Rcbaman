@@ -25,14 +25,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.transaction.fields.status') }}
-                        </th>
-                        <td>
-                            {{ App\Models\Transaction::STATUS_SELECT[$transaction->status] ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.transaction.fields.method') }}
                         </th>
                         <td>
@@ -69,6 +61,14 @@
                         </th>
                         <td>
                             {{ $transaction->amount }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.transaction.fields.status') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Transaction::STATUS_SELECT[$transaction->status] ?? '' }}
                         </td>
                     </tr>
                 </tbody>

@@ -64,3 +64,7 @@ Route::middleware('api')
 ->namespace('App\Http\Controllers')
 ->group(base_path('routes/api/hubapp/index.php'));
 
+
+    // Settings
+    Route::apiResource('settings', 'SettingsApiController');
+});

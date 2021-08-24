@@ -245,6 +245,10 @@ return [
             'order_status_helper' => ' ',
             'transaction'         => 'Transaction',
             'transaction_helper'  => ' ',
+            'customer'            => 'Customer',
+            'customer_helper'     => ' ',
+            'ordertakenby'        => 'Ordertakenby',
+            'ordertakenby_helper' => ' ',
         ],
     ],
     'productManagement' => [

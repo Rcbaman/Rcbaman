@@ -15,7 +15,6 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Laravel\Sanctum\HasApiTokens;
 
 
 class User extends Authenticatable implements HasMedia
@@ -24,7 +23,6 @@ class User extends Authenticatable implements HasMedia
     use Notifiable;
     use InteractsWithMedia;
     use HasFactory;
-    use HasApiTokens;
 
     public $table = 'users';
 
@@ -73,6 +71,11 @@ class User extends Authenticatable implements HasMedia
     public function userLogs()
     {
         return $this->hasMany(Log::class, 'user_id', 'id');
+    }
+
+    public function ordertakenbyOrders()
+    {
+        return $this->belongsToMany(Order::class);
     }
 
     public function setPasswordAttribute($input)
