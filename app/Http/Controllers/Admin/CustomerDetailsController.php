@@ -54,7 +54,7 @@ class CustomerDetailsController extends Controller
     {
         abort_if(Gate::denies('customer_detail_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $customerDetail->load('customerCustomerAddresses');
+        $customerDetail->load('customerCustomerAddresses', 'customerOrders');
 
         return view('admin.customerDetails.show', compact('customerDetail'));
     }

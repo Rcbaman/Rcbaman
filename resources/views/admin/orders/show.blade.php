@@ -33,18 +33,38 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.order.fields.order_status') }}
-                        </th>
-                        <td>
-                            {{ App\Models\Order::ORDER_STATUS_SELECT[$order->order_status] ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.order.fields.transaction') }}
                         </th>
                         <td>
                             {{ $order->transaction->amount ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.order.fields.customer') }}
+                        </th>
+                        <td>
+                            @foreach($order->customers as $key => $customer)
+                                <span class="label label-info">{{ $customer->first_name }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.order.fields.ordertakenby') }}
+                        </th>
+                        <td>
+                            @foreach($order->ordertakenbies as $key => $ordertakenby)
+                                <span class="label label-info">{{ $ordertakenby->name }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.order.fields.order_status') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Order::ORDER_STATUS_SELECT[$order->order_status] ?? '' }}
                         </td>
                     </tr>
                 </tbody>
