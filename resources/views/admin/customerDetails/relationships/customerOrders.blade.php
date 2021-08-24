@@ -28,9 +28,6 @@
                                 {{ trans('cruds.order.fields.total_amount') }}
                             </th>
                             <th>
-                                {{ trans('cruds.order.fields.order_status') }}
-                            </th>
-                            <th>
                                 {{ trans('cruds.order.fields.transaction') }}
                             </th>
                             <th>
@@ -38,6 +35,9 @@
                             </th>
                             <th>
                                 {{ trans('cruds.order.fields.ordertakenby') }}
+                            </th>
+                            <th>
+                                {{ trans('cruds.order.fields.order_status') }}
                             </th>
                             <th>
                                 &nbsp;
@@ -57,9 +57,6 @@
                                     {{ $order->total_amount ?? '' }}
                                 </td>
                                 <td>
-                                    {{ App\Models\Order::ORDER_STATUS_SELECT[$order->order_status] ?? '' }}
-                                </td>
-                                <td>
                                     {{ $order->transaction->amount ?? '' }}
                                 </td>
                                 <td>
@@ -71,6 +68,9 @@
                                     @foreach($order->ordertakenbies as $key => $item)
                                         <span class="badge badge-info">{{ $item->name }}</span>
                                     @endforeach
+                                </td>
+                                <td>
+                                    {{ App\Models\Order::ORDER_STATUS_SELECT[$order->order_status] ?? '' }}
                                 </td>
                                 <td>
                                     @can('order_show')

@@ -1,7 +1,5 @@
 <?php
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
@@ -55,15 +53,17 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Logs
     Route::apiResource('logs', 'LogsApiController');
-    // Settings
-    //Route::apiResource('settings', 'SettingsApiController');
-});
 
+
+    // Settings
+    Route::apiResource('settings', 'SettingsApiController');
+
+    // Product Categories
+    Route::apiResource('product-categories', 'ProductCategoriesApiController');
+});
 
 
 // authentication
 Route::middleware('api')
 ->namespace('App\Http\Controllers')
 ->group(base_path('routes/api/hubapp/index.php'));
-
-

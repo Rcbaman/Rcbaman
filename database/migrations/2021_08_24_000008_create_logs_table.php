@@ -14,8 +14,7 @@ class CreateLogsTable extends Migration
             $table->string('device_ip');
             $table->string('device_type')->nullable();
             $table->string('action');
-            $table->timestamps();
-            $table->softDeletes();
         });
     }
+
 }
