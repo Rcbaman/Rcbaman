@@ -209,47 +209,35 @@
                 @can('customers_management_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/customer-details*") ? "menu-open" : "" }} {{ request()->is("admin/customer-addresses*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="fa-fw nav-icon fas fa-cogs">
+                            <i class="fa-fw nav-icon fas fa-users-cog">
 
                             </i>
                             <p>
-                                {{ trans('cruds.accountsManagement.title') }}
+                                {{ trans('cruds.customersManagement.title') }}
                                 <i class="right fa fa-fw fa-angle-left nav-icon"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            @can('order_access')
+                            @can('customer_detail_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.orders.index") }}" class="nav-link {{ request()->is("admin/orders") || request()->is("admin/orders/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-chess-king">
+                                    <a href="{{ route("admin.customer-details.index") }}" class="nav-link {{ request()->is("admin/customer-details") || request()->is("admin/customer-details/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-users">
 
                                         </i>
                                         <p>
-                                            {{ trans('cruds.order.title') }}
+                                            {{ trans('cruds.customerDetail.title') }}
                                         </p>
                                     </a>
                                 </li>
                             @endcan
-                            @can('transaction_access')
+                            @can('customer_address_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.transactions.index") }}" class="nav-link {{ request()->is("admin/transactions") || request()->is("admin/transactions/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-money-bill-wave">
+                                    <a href="{{ route("admin.customer-addresses.index") }}" class="nav-link {{ request()->is("admin/customer-addresses") || request()->is("admin/customer-addresses/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-location-arrow">
 
                                         </i>
                                         <p>
-                                            {{ trans('cruds.transaction.title') }}
-                                        </p>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('tax_profile_access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.tax-profiles.index") }}" class="nav-link {{ request()->is("admin/tax-profiles") || request()->is("admin/tax-profiles/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-cogs">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.taxProfile.title') }}
+                                            {{ trans('cruds.customerAddress.title') }}
                                         </p>
                                     </a>
                                 </li>
