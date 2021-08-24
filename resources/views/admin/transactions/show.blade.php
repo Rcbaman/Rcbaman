@@ -25,6 +25,38 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.transaction.fields.method') }}
+                        </th>
+                        <td>
+                            {{ $transaction->method }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.transaction.fields.sub_total') }}
+                        </th>
+                        <td>
+                            {{ $transaction->sub_total }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.transaction.fields.tax') }}
+                        </th>
+                        <td>
+                            {{ $transaction->tax }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.transaction.fields.other_charges') }}
+                        </th>
+                        <td>
+                            {{ $transaction->other_charges }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.transaction.fields.amount') }}
                         </th>
                         <td>
@@ -37,22 +69,6 @@
                         </th>
                         <td>
                             {{ App\Models\Transaction::STATUS_SELECT[$transaction->status] ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.transaction.fields.type') }}
-                        </th>
-                        <td>
-                            {{ $transaction->type }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.transaction.fields.method') }}
-                        </th>
-                        <td>
-                            {{ $transaction->method }}
                         </td>
                     </tr>
                 </tbody>
