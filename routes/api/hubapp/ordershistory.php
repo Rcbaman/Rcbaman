@@ -16,6 +16,6 @@ Route::group(['prefix' => 'v1/hubapp', 'as' => 'api.', 'namespace' => 'Api\V1\Hu
     Route::get('todayorders',  [OrderHistoryController::class,'todayOrderHistory']);
     Route::get('currentorders',[OrderHistoryController::class,'currentOrderHistory']);
     Route::post('orderhistory',[OrderHistoryController::class,'allOrderHistory']);
-    Route::post('historyfilter',[OrderHistoryController::class,'orderhistoryFilter']);
+    Route::post('historyfilter',[OrderHistoryController::class,'orderHistoryFilter']);
    
 });

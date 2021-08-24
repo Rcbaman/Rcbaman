@@ -55,6 +55,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Logs
     Route::apiResource('logs', 'LogsApiController');
+    // Settings
+    //Route::apiResource('settings', 'SettingsApiController');
 });
 
 
@@ -65,6 +67,3 @@ Route::middleware('api')
 ->group(base_path('routes/api/hubapp/index.php'));
 
 
-    // Settings
-    Route::apiResource('settings', 'SettingsApiController');
-});

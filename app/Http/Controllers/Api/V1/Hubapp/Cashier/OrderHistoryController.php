@@ -155,12 +155,38 @@ class OrderHistoryController extends BaseController
      *  @filter
      * @order
      */
-    // public function orderhistoryFilter(Request $request){
+    public function orderHistoryFilter(Request $request){
 
-    //     $filter = Order::where()
+        $filter = Order::with(['transaction','customers','ordertakenbies']);
+            if($request->search != ''){
+                $filter->where(function($query) use ($request){
+                    $query->where('order_status','LIKE',$request->search);
+                });
+            }
+            if($request->search == 'all'){
+                // dd($request->search);
+                $filter->orWhere(function($query) use ($request){
+                    $query->where('order_status','!=',$request->search);
+                });  
+            }
+        $mainfilter =  $filter->get();
 
-    // }
+       
+        if(count($mainfilter) > 0):
+            return $this->sendResponse(true,'orderFilter','orderFilter','Order Filter Result.',new OrderHistoryResource($mainfilter),200);
+        else:
+            return $this->sendResponse(false,'orderFilter','orderFilter','No records.');
+        endif;                   
+      
+    }
 
+
+    /***
+    * 
+    * 
+    * 
+    */
+    // public function 
 
 
 

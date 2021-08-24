@@ -66,10 +66,10 @@ class CashierAuthController extends BaseController
     public function Login(Request $request)
     {
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])):
-                      
-            $success['token'] = Auth::user()->createToken("MyCashierUser")->plainTextToken;
+            $user = Auth::user();
+            $success['token'] = $user->createToken("MyCashierUser")->plainTextToken;
             $success['token_type'] = 'Bearer'; 
-            $success['user'] =  Auth::user();           
+            $success['user'] = $user;           
 
             return $this->sendResponse(true,'UserLogin','authorized','User login successfully',new CashierAuthResource($success),200);
         else:
