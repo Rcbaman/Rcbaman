@@ -45,6 +45,11 @@ class CustomerDetail extends Model
         return $this->hasMany(CustomerAddress::class, 'customer_id', 'id');
     }
 
+    public function customerOrders()
+    {
+        return $this->belongsToMany(Order::class);
+    }
+
     public function getDobAttribute($value)
     {
         return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
