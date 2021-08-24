@@ -425,4 +425,22 @@ return [
             'value_helper'      => ' ',
         ],
     ],
+    'productCategory' => [
+        'title'          => 'Product Categories',
+        'title_singular' => 'Product Category',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'product'           => 'Product',
+            'product_helper'    => ' ',
+            'category'          => 'Category',
+            'category_helper'   => ' ',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => ' ',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => ' ',
+        ],
+    ],
 ];

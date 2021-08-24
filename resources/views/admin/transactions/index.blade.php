@@ -72,7 +72,7 @@
                             <select class="search" strict="true">
                                 <option value>{{ trans('global.all') }}</option>
                                 @foreach(App\Models\Transaction::STATUS_SELECT as $key => $item)
-                                <option value="{{ $item }}">{{ $item }}</option>
+                                    <option value="{{ $item }}">{{ $item }}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -82,55 +82,55 @@
                 </thead>
                 <tbody>
                     @foreach($transactions as $key => $transaction)
-                    <tr data-entry-id="{{ $transaction->id }}">
-                        <td>
+                        <tr data-entry-id="{{ $transaction->id }}">
+                            <td>
 
-                        </td>
-                        <td>
-                            {{ $transaction->id ?? '' }}
-                        </td>
-                        <td>
-                            {{ $transaction->method ?? '' }}
-                        </td>
-                        <td>
-                            {{ $transaction->sub_total ?? '' }}
-                        </td>
-                        <td>
-                            {{ $transaction->tax ?? '' }}
-                        </td>
-                        <td>
-                            {{ $transaction->other_charges ?? '' }}
-                        </td>
-                        <td>
-                            {{ $transaction->amount ?? '' }}
-                        </td>
-                        <td>
-                            {{ App\Models\Transaction::STATUS_SELECT[$transaction->status] ?? '' }}
-                        </td>
-                        <td>
-                            @can('transaction_show')
-                            <a class="btn btn-xs btn-primary" href="{{ route('admin.transactions.show', $transaction->id) }}">
-                                {{ trans('global.view') }}
-                            </a>
-                            @endcan
+                            </td>
+                            <td>
+                                {{ $transaction->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $transaction->method ?? '' }}
+                            </td>
+                            <td>
+                                {{ $transaction->sub_total ?? '' }}
+                            </td>
+                            <td>
+                                {{ $transaction->tax ?? '' }}
+                            </td>
+                            <td>
+                                {{ $transaction->other_charges ?? '' }}
+                            </td>
+                            <td>
+                                {{ $transaction->amount ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\Transaction::STATUS_SELECT[$transaction->status] ?? '' }}
+                            </td>
+                            <td>
+                                @can('transaction_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.transactions.show', $transaction->id) }}">
+                                        {{ trans('global.view') }}
+                                    </a>
+                                @endcan
 
-                            @can('transaction_edit')
-                            <a class="btn btn-xs btn-info" href="{{ route('admin.transactions.edit', $transaction->id) }}">
-                                {{ trans('global.edit') }}
-                            </a>
-                            @endcan
+                                @can('transaction_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.transactions.edit', $transaction->id) }}">
+                                        {{ trans('global.edit') }}
+                                    </a>
+                                @endcan
 
-                            @can('transaction_delete')
-                            <form action="{{ route('admin.transactions.destroy', $transaction->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                            </form>
-                            @endcan
+                                @can('transaction_delete')
+                                    <form action="{{ route('admin.transactions.destroy', $transaction->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                    </form>
+                                @endcan
 
-                        </td>
+                            </td>
 
-                    </tr>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
