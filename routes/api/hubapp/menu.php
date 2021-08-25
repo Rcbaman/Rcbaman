@@ -16,7 +16,7 @@ use App\Http\Controllers\Api\V1\Hubapp\Cashier\PizzaMenuController;
 
 Route::group(['prefix' => 'v1/hubapp', 'as' => 'api.', 'namespace' => 'Api\V1\Hubapp\Cashier', 'middleware' => ['auth:sanctum']], function () {
     
-    Route::get('categories', [PizzaMenuController::class,'categoryByProduct']);
+    Route::get('categories', [PizzaMenuController::class,'listOfCategory']);
     Route::post('category/{id}/product', [PizzaMenuController::class,'productIdByProductInfo']);
         
 });

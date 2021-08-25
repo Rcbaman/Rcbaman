@@ -215,18 +215,6 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('product_ingredient_access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.product-ingredients.index") }}" class="nav-link {{ request()->is("admin/product-ingredients") || request()->is("admin/product-ingredients/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-umbrella">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.productIngredient.title') }}
-                                        </p>
-                                    </a>
-                                </li>
-                            @endcan
                         </ul>
                     </li>
                 @endcan
