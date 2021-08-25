@@ -51,22 +51,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('products/ckmedia', 'ProductsController@storeCKEditorImages')->name('products.storeCKEditorImages');
     Route::resource('products', 'ProductsController');
 
-    // Product Variation Sizes
-    Route::delete('product-variation-sizes/destroy', 'ProductVariationSizesController@massDestroy')->name('product-variation-sizes.massDestroy');
-    Route::resource('product-variation-sizes', 'ProductVariationSizesController');
-
-    // Product Crust Size
-    Route::delete('product-crust-sizes/destroy', 'ProductCrustSizeController@massDestroy')->name('product-crust-sizes.massDestroy');
-    Route::resource('product-crust-sizes', 'ProductCrustSizeController');
-
-    // Dishes
-    Route::delete('dishes/destroy', 'DishesController@massDestroy')->name('dishes.massDestroy');
-    Route::resource('dishes', 'DishesController');
-
-    // Dish Ingredients
-    Route::delete('dish-ingredients/destroy', 'DishIngredientsController@massDestroy')->name('dish-ingredients.massDestroy');
-    Route::resource('dish-ingredients', 'DishIngredientsController');
-
     // Orders
     Route::delete('orders/destroy', 'OrdersController@massDestroy')->name('orders.massDestroy');
     Route::resource('orders', 'OrdersController');
@@ -82,6 +66,42 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Customer Addresses
     Route::delete('customer-addresses/destroy', 'CustomerAddressesController@massDestroy')->name('customer-addresses.massDestroy');
     Route::resource('customer-addresses', 'CustomerAddressesController');
+
+    // Tax Profiles
+    Route::delete('tax-profiles/destroy', 'TaxProfilesController@massDestroy')->name('tax-profiles.massDestroy');
+    Route::resource('tax-profiles', 'TaxProfilesController');
+
+    // Product Ingredients
+    Route::delete('product-ingredients/destroy', 'ProductIngredientsController@massDestroy')->name('product-ingredients.massDestroy');
+    Route::resource('product-ingredients', 'ProductIngredientsController');
+
+    // Logs
+    Route::delete('logs/destroy', 'LogsController@massDestroy')->name('logs.massDestroy');
+    Route::resource('logs', 'LogsController');
+
+    // Settings
+    Route::delete('settings/destroy', 'SettingsController@massDestroy')->name('settings.massDestroy');
+    Route::resource('settings', 'SettingsController');
+
+    // Product Profile
+    Route::delete('product-profiles/destroy', 'ProductProfileController@massDestroy')->name('product-profiles.massDestroy');
+    Route::resource('product-profiles', 'ProductProfileController');
+
+    // Crust Size
+    Route::delete('crust-sizes/destroy', 'CrustSizeController@massDestroy')->name('crust-sizes.massDestroy');
+    Route::resource('crust-sizes', 'CrustSizeController');
+
+    // Ingredients Size
+    Route::delete('ingredients-sizes/destroy', 'IngredientsSizeController@massDestroy')->name('ingredients-sizes.massDestroy');
+    Route::resource('ingredients-sizes', 'IngredientsSizeController');
+
+    // Product Sizes
+    Route::delete('product-sizes/destroy', 'ProductSizesController@massDestroy')->name('product-sizes.massDestroy');
+    Route::resource('product-sizes', 'ProductSizesController');
+
+    // Product Crusts
+    Route::delete('product-crusts/destroy', 'ProductCrustsController@massDestroy')->name('product-crusts.massDestroy');
+    Route::resource('product-crusts', 'ProductCrustsController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

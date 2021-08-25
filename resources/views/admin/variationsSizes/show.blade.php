@@ -56,14 +56,30 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#variationsize_product_variation_sizes" role="tab" data-toggle="tab">
-                {{ trans('cruds.productVariationSize.title') }}
+            <a class="nav-link" href="#size_crust_sizes" role="tab" data-toggle="tab">
+                {{ trans('cruds.crustSize.title') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#size_ingredients_sizes" role="tab" data-toggle="tab">
+                {{ trans('cruds.ingredientsSize.title') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#size_product_sizes" role="tab" data-toggle="tab">
+                {{ trans('cruds.productSize.title') }}
             </a>
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="variationsize_product_variation_sizes">
-            @includeIf('admin.variationsSizes.relationships.variationsizeProductVariationSizes', ['productVariationSizes' => $variationsSize->variationsizeProductVariationSizes])
+        <div class="tab-pane" role="tabpanel" id="size_crust_sizes">
+            @includeIf('admin.variationsSizes.relationships.sizeCrustSizes', ['crustSizes' => $variationsSize->sizeCrustSizes])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="size_ingredients_sizes">
+            @includeIf('admin.variationsSizes.relationships.sizeIngredientsSizes', ['ingredientsSizes' => $variationsSize->sizeIngredientsSizes])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="size_product_sizes">
+            @includeIf('admin.variationsSizes.relationships.sizeProductSizes', ['productSizes' => $variationsSize->sizeProductSizes])
         </div>
     </div>
 </div>

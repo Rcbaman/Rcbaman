@@ -54,7 +54,7 @@ class VariationsSizeController extends Controller
     {
         abort_if(Gate::denies('variations_size_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $variationsSize->load('variationsizeProductVariationSizes');
+        $variationsSize->load('sizeCrustSizes', 'sizeIngredientsSizes', 'sizeProductSizes');
 
         return view('admin.variationsSizes.show', compact('variationsSize'));
     }

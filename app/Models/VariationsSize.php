@@ -28,9 +28,19 @@ class VariationsSize extends Model
         'deleted_at',
     ];
 
-    public function variationsizeProductVariationSizes()
+    public function sizeCrustSizes()
     {
-        return $this->hasMany(ProductVariationSize::class, 'variationsize_id', 'id');
+        return $this->hasMany(CrustSize::class, 'size_id', 'id');
+    }
+
+    public function sizeIngredientsSizes()
+    {
+        return $this->hasMany(IngredientsSize::class, 'size_id', 'id');
+    }
+
+    public function sizeProductSizes()
+    {
+        return $this->hasMany(ProductSize::class, 'size_id', 'id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

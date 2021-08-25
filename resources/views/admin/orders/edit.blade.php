@@ -19,6 +19,46 @@
                 <span class="help-block">{{ trans('cruds.order.fields.total_amount_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="transactions">{{ trans('cruds.order.fields.transaction') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('transactions') ? 'is-invalid' : '' }}" name="transactions[]" id="transactions" multiple required>
+                    @foreach($transactions as $id => $transaction)
+                        <option value="{{ $id }}" {{ (in_array($id, old('transactions', [])) || $order->transactions->contains($id)) ? 'selected' : '' }}>{{ $transaction }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('transactions'))
+                    <span class="text-danger">{{ $errors->first('transactions') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.order.fields.transaction_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="customer_id">{{ trans('cruds.order.fields.customer') }}</label>
+                <select class="form-control select2 {{ $errors->has('customer') ? 'is-invalid' : '' }}" name="customer_id" id="customer_id">
+                    @foreach($customers as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('customer_id') ? old('customer_id') : $order->customer->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('customer'))
+                    <span class="text-danger">{{ $errors->first('customer') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.order.fields.customer_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="ordertakenby_id">{{ trans('cruds.order.fields.ordertakenby') }}</label>
+                <select class="form-control select2 {{ $errors->has('ordertakenby') ? 'is-invalid' : '' }}" name="ordertakenby_id" id="ordertakenby_id">
+                    @foreach($ordertakenbies as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('ordertakenby_id') ? old('ordertakenby_id') : $order->ordertakenby->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('ordertakenby'))
+                    <span class="text-danger">{{ $errors->first('ordertakenby') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.order.fields.ordertakenby_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label>{{ trans('cruds.order.fields.order_status') }}</label>
                 <select class="form-control {{ $errors->has('order_status') ? 'is-invalid' : '' }}" name="order_status" id="order_status">
                     <option value disabled {{ old('order_status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
@@ -30,18 +70,6 @@
                     <span class="text-danger">{{ $errors->first('order_status') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.order.fields.order_status_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="transaction_id">{{ trans('cruds.order.fields.transaction') }}</label>
-                <select class="form-control select2 {{ $errors->has('transaction') ? 'is-invalid' : '' }}" name="transaction_id" id="transaction_id">
-                    @foreach($transactions as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('transaction_id') ? old('transaction_id') : $order->transaction->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('transaction'))
-                    <span class="text-danger">{{ $errors->first('transaction') }}</span>
-                @endif
-                <span class="help-block">{{ trans('cruds.order.fields.transaction_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

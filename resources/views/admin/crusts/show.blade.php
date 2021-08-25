@@ -56,22 +56,22 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#crust_product_crust_sizes" role="tab" data-toggle="tab">
-                {{ trans('cruds.productCrustSize.title') }}
+            <a class="nav-link" href="#crust_crust_sizes" role="tab" data-toggle="tab">
+                {{ trans('cruds.crustSize.title') }}
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#crusts_dishes" role="tab" data-toggle="tab">
-                {{ trans('cruds.dish.title') }}
+            <a class="nav-link" href="#crust_product_crusts" role="tab" data-toggle="tab">
+                {{ trans('cruds.productCrust.title') }}
             </a>
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="crust_product_crust_sizes">
-            @includeIf('admin.crusts.relationships.crustProductCrustSizes', ['productCrustSizes' => $crust->crustProductCrustSizes])
+        <div class="tab-pane" role="tabpanel" id="crust_crust_sizes">
+            @includeIf('admin.crusts.relationships.crustCrustSizes', ['crustSizes' => $crust->crustCrustSizes])
         </div>
-        <div class="tab-pane" role="tabpanel" id="crusts_dishes">
-            @includeIf('admin.crusts.relationships.crustsDishes', ['dishes' => $crust->crustsDishes])
+        <div class="tab-pane" role="tabpanel" id="crust_product_crusts">
+            @includeIf('admin.crusts.relationships.crustProductCrusts', ['productCrusts' => $crust->crustProductCrusts])
         </div>
     </div>
 </div>

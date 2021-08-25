@@ -103,6 +103,24 @@
                             {{ $product->slug }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.product.fields.category') }}
+                        </th>
+                        <td>
+                            @foreach($product->categories as $key => $category)
+                                <span class="label label-info">{{ $category->name }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.product.fields.profile') }}
+                        </th>
+                        <td>
+                            {{ $product->profile->name ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
@@ -120,30 +138,30 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#product_product_variation_sizes" role="tab" data-toggle="tab">
-                {{ trans('cruds.productVariationSize.title') }}
+            <a class="nav-link" href="#product_product_ingredients" role="tab" data-toggle="tab">
+                {{ trans('cruds.productIngredient.title') }}
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#product_product_crust_sizes" role="tab" data-toggle="tab">
-                {{ trans('cruds.productCrustSize.title') }}
+            <a class="nav-link" href="#product_product_sizes" role="tab" data-toggle="tab">
+                {{ trans('cruds.productSize.title') }}
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#product_dishes" role="tab" data-toggle="tab">
-                {{ trans('cruds.dish.title') }}
+            <a class="nav-link" href="#product_product_crusts" role="tab" data-toggle="tab">
+                {{ trans('cruds.productCrust.title') }}
             </a>
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="product_product_variation_sizes">
-            @includeIf('admin.products.relationships.productProductVariationSizes', ['productVariationSizes' => $product->productProductVariationSizes])
+        <div class="tab-pane" role="tabpanel" id="product_product_ingredients">
+            @includeIf('admin.products.relationships.productProductIngredients', ['productIngredients' => $product->productProductIngredients])
         </div>
-        <div class="tab-pane" role="tabpanel" id="product_product_crust_sizes">
-            @includeIf('admin.products.relationships.productProductCrustSizes', ['productCrustSizes' => $product->productProductCrustSizes])
+        <div class="tab-pane" role="tabpanel" id="product_product_sizes">
+            @includeIf('admin.products.relationships.productProductSizes', ['productSizes' => $product->productProductSizes])
         </div>
-        <div class="tab-pane" role="tabpanel" id="product_dishes">
-            @includeIf('admin.products.relationships.productDishes', ['dishes' => $product->productDishes])
+        <div class="tab-pane" role="tabpanel" id="product_product_crusts">
+            @includeIf('admin.products.relationships.productProductCrusts', ['productCrusts' => $product->productProductCrusts])
         </div>
     </div>
 </div>
