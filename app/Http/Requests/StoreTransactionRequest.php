@@ -17,15 +17,11 @@ class StoreTransactionRequest extends FormRequest
     public function rules()
     {
         return [
-            'amount' => [
-                'required',
-            ],
-            'type' => [
-                'string',
-                'required',
-            ],
             'method' => [
                 'string',
+                'required',
+            ],
+            'amount' => [
                 'required',
             ],
         ];

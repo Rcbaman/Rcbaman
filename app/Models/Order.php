@@ -32,16 +32,27 @@ class Order extends Model
 
     protected $fillable = [
         'total_amount',
+        'customer_id',
+        'ordertakenby_id',
         'order_status',
-        'transaction_id',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    public function transaction()
+    public function transactions()
     {
-        return $this->belongsTo(Transaction::class, 'transaction_id');
+        return $this->belongsToMany(Transaction::class);
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(CustomerDetail::class, 'customer_id');
+    }
+
+    public function ordertakenby()
+    {
+        return $this->belongsTo(User::class, 'ordertakenby_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

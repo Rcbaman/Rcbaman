@@ -53,6 +53,12 @@
                             {{ trans('cruds.product.fields.slug') }}
                         </th>
                         <th>
+                            {{ trans('cruds.product.fields.category') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.product.fields.profile') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -96,6 +102,22 @@
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($categories as $key => $item)
+                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($product_profiles as $key => $item)
+                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
                         </td>
                         <td>
                         </td>
@@ -144,6 +166,14 @@
                             </td>
                             <td>
                                 {{ $product->slug ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($product->categories as $key => $item)
+                                    <span class="badge badge-info">{{ $item->name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                {{ $product->profile->name ?? '' }}
                             </td>
                             <td>
                                 @can('product_show')
