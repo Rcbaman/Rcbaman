@@ -72,4 +72,10 @@ class Category extends Model implements HasMedia
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
+
 }

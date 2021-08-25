@@ -18,5 +18,7 @@ Route::group(['prefix' => 'v1/hubapp', 'as' => 'api.', 'namespace' => 'Api\V1\Hu
     
     Route::get('categories', [PizzaMenuController::class,'listOfCategory']);
     Route::post('category/{id}/product', [PizzaMenuController::class,'productIdByProductInfo']);
+    Route::get('product', [PizzaMenuController::class,'GetProductByCategory']);
+    
         
 });

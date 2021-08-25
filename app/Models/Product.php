@@ -69,6 +69,10 @@ class Product extends Model implements HasMedia
     {
         return $this->hasMany(ProductSize::class, 'product_id', 'id');
     }
+    public function Crusts()
+    {
+        return $this->hasMany(ProductCrust::class, 'product_id', 'id');
+    }
 
     public function getImageAttribute()
     {
