@@ -176,178 +176,282 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 42,
-                'title' => 'product_variation_size_create',
-            ],
-            [
-                'id'    => 43,
-                'title' => 'product_variation_size_edit',
-            ],
-            [
-                'id'    => 44,
-                'title' => 'product_variation_size_show',
-            ],
-            [
-                'id'    => 45,
-                'title' => 'product_variation_size_delete',
-            ],
-            [
-                'id'    => 46,
-                'title' => 'product_variation_size_access',
-            ],
-            [
-                'id'    => 47,
-                'title' => 'product_crust_size_create',
-            ],
-            [
-                'id'    => 48,
-                'title' => 'product_crust_size_edit',
-            ],
-            [
-                'id'    => 49,
-                'title' => 'product_crust_size_show',
-            ],
-            [
-                'id'    => 50,
-                'title' => 'product_crust_size_delete',
-            ],
-            [
-                'id'    => 51,
-                'title' => 'product_crust_size_access',
-            ],
-            [
-                'id'    => 52,
-                'title' => 'dish_create',
-            ],
-            [
-                'id'    => 53,
-                'title' => 'dish_edit',
-            ],
-            [
-                'id'    => 54,
-                'title' => 'dish_show',
-            ],
-            [
-                'id'    => 55,
-                'title' => 'dish_delete',
-            ],
-            [
-                'id'    => 56,
-                'title' => 'dish_access',
-            ],
-            [
-                'id'    => 57,
-                'title' => 'dish_ingredient_create',
-            ],
-            [
-                'id'    => 58,
-                'title' => 'dish_ingredient_edit',
-            ],
-            [
-                'id'    => 59,
-                'title' => 'dish_ingredient_show',
-            ],
-            [
-                'id'    => 60,
-                'title' => 'dish_ingredient_delete',
-            ],
-            [
-                'id'    => 61,
-                'title' => 'dish_ingredient_access',
-            ],
-            [
-                'id'    => 62,
                 'title' => 'order_create',
             ],
             [
-                'id'    => 63,
+                'id'    => 43,
                 'title' => 'order_edit',
             ],
             [
-                'id'    => 64,
+                'id'    => 44,
                 'title' => 'order_show',
             ],
             [
-                'id'    => 65,
+                'id'    => 45,
                 'title' => 'order_delete',
             ],
             [
-                'id'    => 66,
+                'id'    => 46,
                 'title' => 'order_access',
             ],
             [
-                'id'    => 67,
+                'id'    => 47,
                 'title' => 'product_management_access',
             ],
             [
-                'id'    => 68,
+                'id'    => 48,
                 'title' => 'menu_management_access',
             ],
             [
-                'id'    => 69,
+                'id'    => 49,
                 'title' => 'transaction_create',
             ],
             [
-                'id'    => 70,
+                'id'    => 50,
                 'title' => 'transaction_edit',
             ],
             [
-                'id'    => 71,
+                'id'    => 51,
                 'title' => 'transaction_show',
             ],
             [
-                'id'    => 72,
+                'id'    => 52,
                 'title' => 'transaction_delete',
             ],
             [
-                'id'    => 73,
+                'id'    => 53,
                 'title' => 'transaction_access',
             ],
             [
-                'id'    => 74,
+                'id'    => 54,
                 'title' => 'customer_detail_create',
             ],
             [
-                'id'    => 75,
+                'id'    => 55,
                 'title' => 'customer_detail_edit',
             ],
             [
-                'id'    => 76,
+                'id'    => 56,
                 'title' => 'customer_detail_show',
             ],
             [
-                'id'    => 77,
+                'id'    => 57,
                 'title' => 'customer_detail_delete',
             ],
             [
-                'id'    => 78,
+                'id'    => 58,
                 'title' => 'customer_detail_access',
             ],
             [
-                'id'    => 79,
+                'id'    => 59,
                 'title' => 'customers_management_access',
             ],
             [
-                'id'    => 80,
+                'id'    => 60,
                 'title' => 'customer_address_create',
             ],
             [
-                'id'    => 81,
+                'id'    => 61,
                 'title' => 'customer_address_edit',
             ],
             [
-                'id'    => 82,
+                'id'    => 62,
                 'title' => 'customer_address_show',
             ],
             [
-                'id'    => 83,
+                'id'    => 63,
                 'title' => 'customer_address_delete',
             ],
             [
-                'id'    => 84,
+                'id'    => 64,
                 'title' => 'customer_address_access',
             ],
             [
+                'id'    => 65,
+                'title' => 'accounts_management_access',
+            ],
+            [
+                'id'    => 66,
+                'title' => 'tax_profile_create',
+            ],
+            [
+                'id'    => 67,
+                'title' => 'tax_profile_edit',
+            ],
+            [
+                'id'    => 68,
+                'title' => 'tax_profile_show',
+            ],
+            [
+                'id'    => 69,
+                'title' => 'tax_profile_delete',
+            ],
+            [
+                'id'    => 70,
+                'title' => 'tax_profile_access',
+            ],
+            [
+                'id'    => 71,
+                'title' => 'product_ingredient_create',
+            ],
+            [
+                'id'    => 72,
+                'title' => 'product_ingredient_edit',
+            ],
+            [
+                'id'    => 73,
+                'title' => 'product_ingredient_show',
+            ],
+            [
+                'id'    => 74,
+                'title' => 'product_ingredient_delete',
+            ],
+            [
+                'id'    => 75,
+                'title' => 'product_ingredient_access',
+            ],
+            [
+                'id'    => 76,
+                'title' => 'log_create',
+            ],
+            [
+                'id'    => 77,
+                'title' => 'log_edit',
+            ],
+            [
+                'id'    => 78,
+                'title' => 'log_show',
+            ],
+            [
+                'id'    => 79,
+                'title' => 'log_delete',
+            ],
+            [
+                'id'    => 80,
+                'title' => 'log_access',
+            ],
+            [
+                'id'    => 81,
+                'title' => 'setting_create',
+            ],
+            [
+                'id'    => 82,
+                'title' => 'setting_edit',
+            ],
+            [
+                'id'    => 83,
+                'title' => 'setting_show',
+            ],
+            [
+                'id'    => 84,
+                'title' => 'setting_delete',
+            ],
+            [
                 'id'    => 85,
+                'title' => 'setting_access',
+            ],
+            [
+                'id'    => 86,
+                'title' => 'product_profile_create',
+            ],
+            [
+                'id'    => 87,
+                'title' => 'product_profile_edit',
+            ],
+            [
+                'id'    => 88,
+                'title' => 'product_profile_show',
+            ],
+            [
+                'id'    => 89,
+                'title' => 'product_profile_delete',
+            ],
+            [
+                'id'    => 90,
+                'title' => 'product_profile_access',
+            ],
+            [
+                'id'    => 91,
+                'title' => 'crust_size_create',
+            ],
+            [
+                'id'    => 92,
+                'title' => 'crust_size_edit',
+            ],
+            [
+                'id'    => 93,
+                'title' => 'crust_size_show',
+            ],
+            [
+                'id'    => 94,
+                'title' => 'crust_size_delete',
+            ],
+            [
+                'id'    => 95,
+                'title' => 'crust_size_access',
+            ],
+            [
+                'id'    => 96,
+                'title' => 'ingredients_size_create',
+            ],
+            [
+                'id'    => 97,
+                'title' => 'ingredients_size_edit',
+            ],
+            [
+                'id'    => 98,
+                'title' => 'ingredients_size_show',
+            ],
+            [
+                'id'    => 99,
+                'title' => 'ingredients_size_delete',
+            ],
+            [
+                'id'    => 100,
+                'title' => 'ingredients_size_access',
+            ],
+            [
+                'id'    => 101,
+                'title' => 'product_size_create',
+            ],
+            [
+                'id'    => 102,
+                'title' => 'product_size_edit',
+            ],
+            [
+                'id'    => 103,
+                'title' => 'product_size_show',
+            ],
+            [
+                'id'    => 104,
+                'title' => 'product_size_delete',
+            ],
+            [
+                'id'    => 105,
+                'title' => 'product_size_access',
+            ],
+            [
+                'id'    => 106,
+                'title' => 'product_crust_create',
+            ],
+            [
+                'id'    => 107,
+                'title' => 'product_crust_edit',
+            ],
+            [
+                'id'    => 108,
+                'title' => 'product_crust_show',
+            ],
+            [
+                'id'    => 109,
+                'title' => 'product_crust_delete',
+            ],
+            [
+                'id'    => 110,
+                'title' => 'product_crust_access',
+            ],
+            [
+                'id'    => 111,
                 'title' => 'profile_password_edit',
             ],
         ];

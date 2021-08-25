@@ -35,6 +35,16 @@ class StoreProductRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'categories.*' => [
+                'integer',
+            ],
+            'categories' => [
+                'array',
+            ],
+            'profile_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }

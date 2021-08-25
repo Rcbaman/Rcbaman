@@ -54,7 +54,7 @@ class IngredientsController extends Controller
     {
         abort_if(Gate::denies('ingredient_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $ingredient->load('ingredientsDishes');
+        $ingredient->load('ingredientIngredientsSizes', 'ingredientsProductIngredients');
 
         return view('admin.ingredients.show', compact('ingredient'));
     }
