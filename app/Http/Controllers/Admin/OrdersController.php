@@ -20,7 +20,7 @@ class OrdersController extends Controller
     {
         abort_if(Gate::denies('order_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $orders = Order::with(['transaction', 'customers', 'ordertakenbies'])->get();
+        $orders = Order::with(['transactions', 'customer', 'ordertakenby'])->get();
 
         $transactions = Transaction::get();
 
@@ -35,11 +35,11 @@ class OrdersController extends Controller
     {
         abort_if(Gate::denies('order_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $transactions = Transaction::pluck('amount', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $transactions = Transaction::pluck('amount', 'id');
 
-        $customers = CustomerDetail::pluck('first_name', 'id');
+        $customers = CustomerDetail::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $ordertakenbies = User::pluck('name', 'id');
+        $ordertakenbies = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.orders.create', compact('transactions', 'customers', 'ordertakenbies'));
     }
@@ -47,8 +47,7 @@ class OrdersController extends Controller
     public function store(StoreOrderRequest $request)
     {
         $order = Order::create($request->all());
-        $order->customers()->sync($request->input('customers', []));
-        $order->ordertakenbies()->sync($request->input('ordertakenbies', []));
+        $order->transactions()->sync($request->input('transactions', []));
 
         return redirect()->route('admin.orders.index');
     }
@@ -57,13 +56,13 @@ class OrdersController extends Controller
     {
         abort_if(Gate::denies('order_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $transactions = Transaction::pluck('amount', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $transactions = Transaction::pluck('amount', 'id');
 
-        $customers = CustomerDetail::pluck('first_name', 'id');
+        $customers = CustomerDetail::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $ordertakenbies = User::pluck('name', 'id');
+        $ordertakenbies = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $order->load('transaction', 'customers', 'ordertakenbies');
+        $order->load('transactions', 'customer', 'ordertakenby');
 
         return view('admin.orders.edit', compact('transactions', 'customers', 'ordertakenbies', 'order'));
     }
@@ -71,8 +70,7 @@ class OrdersController extends Controller
     public function update(UpdateOrderRequest $request, Order $order)
     {
         $order->update($request->all());
-        $order->customers()->sync($request->input('customers', []));
-        $order->ordertakenbies()->sync($request->input('ordertakenbies', []));
+        $order->transactions()->sync($request->input('transactions', []));
 
         return redirect()->route('admin.orders.index');
     }
@@ -81,7 +79,7 @@ class OrdersController extends Controller
     {
         abort_if(Gate::denies('order_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $order->load('transaction', 'customers', 'ordertakenbies');
+        $order->load('transactions', 'customer', 'ordertakenby');
 
         return view('admin.orders.show', compact('order'));
     }

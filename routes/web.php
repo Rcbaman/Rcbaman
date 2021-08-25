@@ -56,14 +56,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('products/ckmedia', 'ProductsController@storeCKEditorImages')->name('products.storeCKEditorImages');
     Route::resource('products', 'ProductsController');
 
-    // Product Variation Sizes
-    Route::delete('product-variation-sizes/destroy', 'ProductVariationSizesController@massDestroy')->name('product-variation-sizes.massDestroy');
-    Route::resource('product-variation-sizes', 'ProductVariationSizesController');
-
-    // Product Crust Size
-    Route::delete('product-crust-sizes/destroy', 'ProductCrustSizeController@massDestroy')->name('product-crust-sizes.massDestroy');
-    Route::resource('product-crust-sizes', 'ProductCrustSizeController');
-
     // Orders
     Route::delete('orders/destroy', 'OrdersController@massDestroy')->name('orders.massDestroy');
     Route::resource('orders', 'OrdersController');
@@ -95,6 +87,22 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Settings
     Route::delete('settings/destroy', 'SettingsController@massDestroy')->name('settings.massDestroy');
     Route::resource('settings', 'SettingsController');
+
+    // Product Profile
+    Route::delete('product-profiles/destroy', 'ProductProfileController@massDestroy')->name('product-profiles.massDestroy');
+    Route::resource('product-profiles', 'ProductProfileController');
+
+    // Crust Size
+    Route::delete('crust-sizes/destroy', 'CrustSizeController@massDestroy')->name('crust-sizes.massDestroy');
+    Route::resource('crust-sizes', 'CrustSizeController');
+
+    // Ingredients Size
+    Route::delete('ingredients-sizes/destroy', 'IngredientsSizeController@massDestroy')->name('ingredients-sizes.massDestroy');
+    Route::resource('ingredients-sizes', 'IngredientsSizeController');
+
+    // Product Sizes
+    Route::delete('product-sizes/destroy', 'ProductSizesController@massDestroy')->name('product-sizes.massDestroy');
+    Route::resource('product-sizes', 'ProductSizesController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

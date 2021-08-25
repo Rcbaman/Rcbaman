@@ -113,6 +113,14 @@
                             @endforeach
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.product.fields.profile') }}
+                        </th>
+                        <td>
+                            {{ $product->profile->name ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
@@ -130,30 +138,22 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#product_product_variation_sizes" role="tab" data-toggle="tab">
-                {{ trans('cruds.productVariationSize.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#product_product_crust_sizes" role="tab" data-toggle="tab">
-                {{ trans('cruds.productCrustSize.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="#product_product_ingredients" role="tab" data-toggle="tab">
                 {{ trans('cruds.productIngredient.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#product_product_sizes" role="tab" data-toggle="tab">
+                {{ trans('cruds.productSize.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="product_product_variation_sizes">
-            @includeIf('admin.products.relationships.productProductVariationSizes', ['productVariationSizes' => $product->productProductVariationSizes])
-        </div>
-        <div class="tab-pane" role="tabpanel" id="product_product_crust_sizes">
-            @includeIf('admin.products.relationships.productProductCrustSizes', ['productCrustSizes' => $product->productProductCrustSizes])
-        </div>
         <div class="tab-pane" role="tabpanel" id="product_product_ingredients">
             @includeIf('admin.products.relationships.productProductIngredients', ['productIngredients' => $product->productProductIngredients])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="product_product_sizes">
+            @includeIf('admin.products.relationships.productProductSizes', ['productSizes' => $product->productProductSizes])
         </div>
     </div>
 </div>

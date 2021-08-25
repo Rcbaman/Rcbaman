@@ -102,17 +102,15 @@
                                 {{ $order->total_amount ?? '' }}
                             </td>
                             <td>
-                                {{ $order->transaction->amount ?? '' }}
-                            </td>
-                            <td>
-                                @foreach($order->customers as $key => $item)
-                                    <span class="badge badge-info">{{ $item->first_name }}</span>
+                                @foreach($order->transactions as $key => $item)
+                                    <span class="badge badge-info">{{ $item->amount }}</span>
                                 @endforeach
                             </td>
                             <td>
-                                @foreach($order->ordertakenbies as $key => $item)
-                                    <span class="badge badge-info">{{ $item->name }}</span>
-                                @endforeach
+                                {{ $order->customer->first_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $order->ordertakenby->name ?? '' }}
                             </td>
                             <td>
                                 {{ App\Models\Order::ORDER_STATUS_SELECT[$order->order_status] ?? '' }}

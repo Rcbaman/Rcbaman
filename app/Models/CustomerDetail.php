@@ -47,7 +47,7 @@ class CustomerDetail extends Model
 
     public function customerOrders()
     {
-        return $this->belongsToMany(Order::class);
+        return $this->hasMany(Order::class, 'customer_id', 'id');
     }
 
     public function getDobAttribute($value)

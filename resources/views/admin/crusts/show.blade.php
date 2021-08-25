@@ -56,14 +56,14 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#crust_product_crust_sizes" role="tab" data-toggle="tab">
-                {{ trans('cruds.productCrustSize.title') }}
+            <a class="nav-link" href="#crust_crust_sizes" role="tab" data-toggle="tab">
+                {{ trans('cruds.crustSize.title') }}
             </a>
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="crust_product_crust_sizes">
-            @includeIf('admin.crusts.relationships.crustProductCrustSizes', ['productCrustSizes' => $crust->crustProductCrustSizes])
+        <div class="tab-pane" role="tabpanel" id="crust_crust_sizes">
+            @includeIf('admin.crusts.relationships.crustCrustSizes', ['crustSizes' => $crust->crustCrustSizes])
         </div>
     </div>
 </div>

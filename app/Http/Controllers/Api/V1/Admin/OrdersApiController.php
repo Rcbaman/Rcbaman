@@ -17,14 +17,13 @@ class OrdersApiController extends Controller
     {
         abort_if(Gate::denies('order_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new OrderResource(Order::with(['transaction', 'customers', 'ordertakenbies'])->get());
+        return new OrderResource(Order::with(['transactions', 'customer', 'ordertakenby'])->get());
     }
 
     public function store(StoreOrderRequest $request)
     {
         $order = Order::create($request->all());
-        $order->customers()->sync($request->input('customers', []));
-        $order->ordertakenbies()->sync($request->input('ordertakenbies', []));
+        $order->transactions()->sync($request->input('transactions', []));
 
         return (new OrderResource($order))
             ->response()
@@ -35,14 +34,13 @@ class OrdersApiController extends Controller
     {
         abort_if(Gate::denies('order_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new OrderResource($order->load(['transaction', 'customers', 'ordertakenbies']));
+        return new OrderResource($order->load(['transactions', 'customer', 'ordertakenby']));
     }
 
     public function update(UpdateOrderRequest $request, Order $order)
     {
         $order->update($request->all());
-        $order->customers()->sync($request->input('customers', []));
-        $order->ordertakenbies()->sync($request->input('ordertakenbies', []));
+        $order->transactions()->sync($request->input('transactions', []));
 
         return (new OrderResource($order))
             ->response()

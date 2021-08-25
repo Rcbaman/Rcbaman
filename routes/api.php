@@ -30,12 +30,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::post('products/media', 'ProductsApiController@storeMedia')->name('products.storeMedia');
     Route::apiResource('products', 'ProductsApiController');
 
-    // Product Variation Sizes
-    Route::apiResource('product-variation-sizes', 'ProductVariationSizesApiController');
-
-    // Product Crust Size
-    Route::apiResource('product-crust-sizes', 'ProductCrustSizeApiController');
-
     // Orders
     Route::apiResource('orders', 'OrdersApiController');
 
@@ -51,11 +45,26 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Tax Profiles
     Route::apiResource('tax-profiles', 'TaxProfilesApiController');
 
+    // Product Ingredients
+    Route::apiResource('product-ingredients', 'ProductIngredientsApiController');
+
     // Logs
     Route::apiResource('logs', 'LogsApiController');
 
     // Settings
     Route::apiResource('settings', 'SettingsApiController');
+
+    // Product Profile
+    Route::apiResource('product-profiles', 'ProductProfileApiController');
+
+    // Crust Size
+    Route::apiResource('crust-sizes', 'CrustSizeApiController');
+
+    // Ingredients Size
+    Route::apiResource('ingredients-sizes', 'IngredientsSizeApiController');
+
+    // Product Sizes
+    Route::apiResource('product-sizes', 'ProductSizesApiController');
 });
 
 

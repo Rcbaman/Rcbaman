@@ -40,7 +40,7 @@ class Transaction extends Model
 
     public function transactionOrders()
     {
-        return $this->hasMany(Order::class, 'transaction_id', 'id');
+        return $this->belongsToMany(Order::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

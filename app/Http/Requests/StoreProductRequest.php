@@ -41,6 +41,10 @@ class StoreProductRequest extends FormRequest
             'categories' => [
                 'array',
             ],
+            'profile_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }

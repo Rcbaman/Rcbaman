@@ -110,6 +110,18 @@
                 <span class="help-block">{{ trans('cruds.product.fields.category_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="profile_id">{{ trans('cruds.product.fields.profile') }}</label>
+                <select class="form-control select2 {{ $errors->has('profile') ? 'is-invalid' : '' }}" name="profile_id" id="profile_id" required>
+                    @foreach($profiles as $id => $entry)
+                        <option value="{{ $id }}" {{ old('profile_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('profile'))
+                    <span class="text-danger">{{ $errors->first('profile') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.profile_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

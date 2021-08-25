@@ -20,17 +20,10 @@ class UpdateOrderRequest extends FormRequest
             'total_amount' => [
                 'required',
             ],
-            'customers.*' => [
+            'transactions.*' => [
                 'integer',
             ],
-            'customers' => [
-                'required',
-                'array',
-            ],
-            'ordertakenbies.*' => [
-                'integer',
-            ],
-            'ordertakenbies' => [
+            'transactions' => [
                 'required',
                 'array',
             ],

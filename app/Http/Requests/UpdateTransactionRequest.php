@@ -17,11 +17,11 @@ class UpdateTransactionRequest extends FormRequest
     public function rules()
     {
         return [
-            'amount' => [
-                'required',
-            ],
             'method' => [
                 'string',
+                'required',
+            ],
+            'amount' => [
                 'required',
             ],
         ];

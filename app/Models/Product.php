@@ -48,6 +48,7 @@ class Product extends Model implements HasMedia
         'variations',
         'status',
         'slug',
+        'profile_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -59,19 +60,14 @@ class Product extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    public function productProductVariationSizes()
-    {
-        return $this->hasMany(ProductVariationSize::class, 'product_id', 'id');
-    }
-
-    public function productProductCrustSizes()
-    {
-        return $this->hasMany(ProductCrustSize::class, 'product_id', 'id');
-    }
-
     public function productProductIngredients()
     {
         return $this->hasMany(ProductIngredient::class, 'product_id', 'id');
+    }
+
+    public function productProductSizes()
+    {
+        return $this->hasMany(ProductSize::class, 'product_id', 'id');
     }
 
     public function getImageAttribute()
@@ -101,6 +97,11 @@ class Product extends Model implements HasMedia
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    public function profile()
+    {
+        return $this->belongsTo(ProductProfile::class, 'profile_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

@@ -74,7 +74,7 @@ class User extends Authenticatable implements HasMedia
 
     public function ordertakenbyOrders()
     {
-        return $this->belongsToMany(Order::class);
+        return $this->hasMany(Order::class, 'ordertakenby_id', 'id');
     }
 
     public function setPasswordAttribute($input)

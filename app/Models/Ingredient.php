@@ -28,6 +28,11 @@ class Ingredient extends Model
         'deleted_at',
     ];
 
+    public function ingredientIngredientsSizes()
+    {
+        return $this->hasMany(IngredientsSize::class, 'ingredient_id', 'id');
+    }
+
     public function ingredientsProductIngredients()
     {
         return $this->belongsToMany(ProductIngredient::class);

@@ -9,6 +9,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductProfile;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -22,11 +23,13 @@ class ProductsController extends Controller
     {
         abort_if(Gate::denies('product_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $products = Product::with(['categories', 'media'])->get();
+        $products = Product::with(['categories', 'profile', 'media'])->get();
 
         $categories = Category::get();
 
-        return view('admin.products.index', compact('products', 'categories'));
+        $product_profiles = ProductProfile::get();
+
+        return view('admin.products.index', compact('products', 'categories', 'product_profiles'));
     }
 
     public function create()
@@ -35,7 +38,9 @@ class ProductsController extends Controller
 
         $categories = Category::pluck('name', 'id');
 
-        return view('admin.products.create', compact('categories'));
+        $profiles = ProductProfile::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.products.create', compact('categories', 'profiles'));
     }
 
     public function store(StoreProductRequest $request)
@@ -63,9 +68,11 @@ class ProductsController extends Controller
 
         $categories = Category::pluck('name', 'id');
 
-        $product->load('categories');
+        $profiles = ProductProfile::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.products.edit', compact('categories', 'product'));
+        $product->load('categories', 'profile');
+
+        return view('admin.products.edit', compact('categories', 'profiles', 'product'));
     }
 
     public function update(UpdateProductRequest $request, Product $product)
@@ -104,7 +111,7 @@ class ProductsController extends Controller
     {
         abort_if(Gate::denies('product_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $product->load('categories', 'productProductVariationSizes', 'productProductCrustSizes', 'productProductIngredients');
+        $product->load('categories', 'profile', 'productProductIngredients', 'productProductSizes');
 
         return view('admin.products.show', compact('product'));
     }

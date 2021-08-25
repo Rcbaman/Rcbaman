@@ -41,6 +41,10 @@ class UpdateProductRequest extends FormRequest
             'categories' => [
                 'array',
             ],
+            'profile_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }

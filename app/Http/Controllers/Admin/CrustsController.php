@@ -54,7 +54,7 @@ class CrustsController extends Controller
     {
         abort_if(Gate::denies('crust_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $crust->load('crustProductCrustSizes');
+        $crust->load('crustCrustSizes');
 
         return view('admin.crusts.show', compact('crust'));
     }

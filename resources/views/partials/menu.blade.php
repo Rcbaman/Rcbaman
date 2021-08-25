@@ -84,7 +84,7 @@
                     </li>
                 @endcan
                 @can('product_management_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/products*") ? "menu-open" : "" }} {{ request()->is("admin/categories*") ? "menu-open" : "" }} {{ request()->is("admin/ingredients*") ? "menu-open" : "" }} {{ request()->is("admin/variations-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/crusts*") ? "menu-open" : "" }} {{ request()->is("admin/product-variation-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/product-crust-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/product-ingredients*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/products*") ? "menu-open" : "" }} {{ request()->is("admin/product-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/product-ingredients*") ? "menu-open" : "" }} {{ request()->is("admin/product-profiles*") ? "menu-open" : "" }} {{ request()->is("admin/categories*") ? "menu-open" : "" }} {{ request()->is("admin/variations-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/crusts*") ? "menu-open" : "" }} {{ request()->is("admin/crust-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/ingredients*") ? "menu-open" : "" }} {{ request()->is("admin/ingredients-sizes*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-archive">
 
@@ -107,6 +107,42 @@
                                     </a>
                                 </li>
                             @endcan
+                            @can('product_size_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.product-sizes.index") }}" class="nav-link {{ request()->is("admin/product-sizes") || request()->is("admin/product-sizes/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fab fa-product-hunt">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.productSize.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('product_ingredient_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.product-ingredients.index") }}" class="nav-link {{ request()->is("admin/product-ingredients") || request()->is("admin/product-ingredients/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-umbrella">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.productIngredient.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('product_profile_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.product-profiles.index") }}" class="nav-link {{ request()->is("admin/product-profiles") || request()->is("admin/product-profiles/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-user">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.productProfile.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
                             @can('category_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.categories.index") }}" class="nav-link {{ request()->is("admin/categories") || request()->is("admin/categories/*") ? "active" : "" }}">
@@ -115,18 +151,6 @@
                                         </i>
                                         <p>
                                             {{ trans('cruds.category.title') }}
-                                        </p>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('ingredient_access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.ingredients.index") }}" class="nav-link {{ request()->is("admin/ingredients") || request()->is("admin/ingredients/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon far fa-file-alt">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.ingredient.title') }}
                                         </p>
                                     </a>
                                 </li>
@@ -155,26 +179,38 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('product_variation_size_access')
+                            @can('crust_size_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.product-variation-sizes.index") }}" class="nav-link {{ request()->is("admin/product-variation-sizes") || request()->is("admin/product-variation-sizes/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fab fa-product-hunt">
+                                    <a href="{{ route("admin.crust-sizes.index") }}" class="nav-link {{ request()->is("admin/crust-sizes") || request()->is("admin/crust-sizes/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-mortar-pestle">
 
                                         </i>
                                         <p>
-                                            {{ trans('cruds.productVariationSize.title') }}
+                                            {{ trans('cruds.crustSize.title') }}
                                         </p>
                                     </a>
                                 </li>
                             @endcan
-                            @can('product_crust_size_access')
+                            @can('ingredient_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.product-crust-sizes.index") }}" class="nav-link {{ request()->is("admin/product-crust-sizes") || request()->is("admin/product-crust-sizes/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-box">
+                                    <a href="{{ route("admin.ingredients.index") }}" class="nav-link {{ request()->is("admin/ingredients") || request()->is("admin/ingredients/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-anchor">
 
                                         </i>
                                         <p>
-                                            {{ trans('cruds.productCrustSize.title') }}
+                                            {{ trans('cruds.ingredient.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('ingredients_size_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.ingredients-sizes.index") }}" class="nav-link {{ request()->is("admin/ingredients-sizes") || request()->is("admin/ingredients-sizes/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-anchor">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.ingredientsSize.title') }}
                                         </p>
                                     </a>
                                 </li>

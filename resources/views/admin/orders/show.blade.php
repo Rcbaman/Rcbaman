@@ -36,7 +36,9 @@
                             {{ trans('cruds.order.fields.transaction') }}
                         </th>
                         <td>
-                            {{ $order->transaction->amount ?? '' }}
+                            @foreach($order->transactions as $key => $transaction)
+                                <span class="label label-info">{{ $transaction->amount }}</span>
+                            @endforeach
                         </td>
                     </tr>
                     <tr>
@@ -44,9 +46,7 @@
                             {{ trans('cruds.order.fields.customer') }}
                         </th>
                         <td>
-                            @foreach($order->customers as $key => $customer)
-                                <span class="label label-info">{{ $customer->first_name }}</span>
-                            @endforeach
+                            {{ $order->customer->first_name ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -54,9 +54,7 @@
                             {{ trans('cruds.order.fields.ordertakenby') }}
                         </th>
                         <td>
-                            @foreach($order->ordertakenbies as $key => $ordertakenby)
-                                <span class="label label-info">{{ $ordertakenby->name }}</span>
-                            @endforeach
+                            {{ $order->ordertakenby->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
