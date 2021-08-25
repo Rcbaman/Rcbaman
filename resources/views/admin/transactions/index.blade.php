@@ -26,16 +26,22 @@
                             {{ trans('cruds.transaction.fields.id') }}
                         </th>
                         <th>
+                            {{ trans('cruds.transaction.fields.method') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.transaction.fields.sub_total') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.transaction.fields.tax') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.transaction.fields.other_charges') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.transaction.fields.amount') }}
                         </th>
                         <th>
                             {{ trans('cruds.transaction.fields.status') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.transaction.fields.type') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.transaction.fields.method') }}
                         </th>
                         <th>
                             &nbsp;
@@ -43,6 +49,18 @@
                     </tr>
                     <tr>
                         <td>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -59,12 +77,6 @@
                             </select>
                         </td>
                         <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
                         </td>
                     </tr>
                 </thead>
@@ -78,16 +90,22 @@
                                 {{ $transaction->id ?? '' }}
                             </td>
                             <td>
+                                {{ $transaction->method ?? '' }}
+                            </td>
+                            <td>
+                                {{ $transaction->sub_total ?? '' }}
+                            </td>
+                            <td>
+                                {{ $transaction->tax ?? '' }}
+                            </td>
+                            <td>
+                                {{ $transaction->other_charges ?? '' }}
+                            </td>
+                            <td>
                                 {{ $transaction->amount ?? '' }}
                             </td>
                             <td>
                                 {{ App\Models\Transaction::STATUS_SELECT[$transaction->status] ?? '' }}
-                            </td>
-                            <td>
-                                {{ $transaction->type ?? '' }}
-                            </td>
-                            <td>
-                                {{ $transaction->method ?? '' }}
                             </td>
                             <td>
                                 @can('transaction_show')

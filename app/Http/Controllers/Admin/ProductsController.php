@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyProductRequest;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use Gate;
 use Illuminate\Http\Request;
@@ -21,22 +22,26 @@ class ProductsController extends Controller
     {
         abort_if(Gate::denies('product_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $products = Product::with(['media'])->get();
+        $products = Product::with(['categories', 'media'])->get();
 
-        return view('admin.products.index', compact('products'));
+        $categories = Category::get();
+
+        return view('admin.products.index', compact('products', 'categories'));
     }
 
     public function create()
     {
         abort_if(Gate::denies('product_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.products.create');
+        $categories = Category::pluck('name', 'id');
+
+        return view('admin.products.create', compact('categories'));
     }
 
     public function store(StoreProductRequest $request)
     {
         $product = Product::create($request->all());
-
+        $product->categories()->sync($request->input('categories', []));
         if ($request->input('image', false)) {
             $product->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
         }
@@ -56,13 +61,17 @@ class ProductsController extends Controller
     {
         abort_if(Gate::denies('product_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.products.edit', compact('product'));
+        $categories = Category::pluck('name', 'id');
+
+        $product->load('categories');
+
+        return view('admin.products.edit', compact('categories', 'product'));
     }
 
     public function update(UpdateProductRequest $request, Product $product)
     {
         $product->update($request->all());
-
+        $product->categories()->sync($request->input('categories', []));
         if ($request->input('image', false)) {
             if (!$product->image || $request->input('image') !== $product->image->file_name) {
                 if ($product->image) {
@@ -95,7 +104,7 @@ class ProductsController extends Controller
     {
         abort_if(Gate::denies('product_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $product->load('productProductVariationSizes', 'productProductCrustSizes', 'productDishes');
+        $product->load('categories', 'productProductVariationSizes', 'productProductCrustSizes', 'productProductIngredients');
 
         return view('admin.products.show', compact('product'));
     }
