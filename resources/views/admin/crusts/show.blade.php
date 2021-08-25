@@ -60,10 +60,18 @@
                 {{ trans('cruds.crustSize.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#crust_product_crusts" role="tab" data-toggle="tab">
+                {{ trans('cruds.productCrust.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="crust_crust_sizes">
             @includeIf('admin.crusts.relationships.crustCrustSizes', ['crustSizes' => $crust->crustCrustSizes])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="crust_product_crusts">
+            @includeIf('admin.crusts.relationships.crustProductCrusts', ['productCrusts' => $crust->crustProductCrusts])
         </div>
     </div>
 </div>

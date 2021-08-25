@@ -65,6 +65,9 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Product Sizes
     Route::apiResource('product-sizes', 'ProductSizesApiController');
+
+    // Product Crusts
+    Route::apiResource('product-crusts', 'ProductCrustsApiController');
 });
 
 

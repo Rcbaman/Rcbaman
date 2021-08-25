@@ -103,6 +103,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Product Sizes
     Route::delete('product-sizes/destroy', 'ProductSizesController@massDestroy')->name('product-sizes.massDestroy');
     Route::resource('product-sizes', 'ProductSizesController');
+
+    // Product Crusts
+    Route::delete('product-crusts/destroy', 'ProductCrustsController@massDestroy')->name('product-crusts.massDestroy');
+    Route::resource('product-crusts', 'ProductCrustsController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

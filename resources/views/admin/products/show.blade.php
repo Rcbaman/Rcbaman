@@ -147,6 +147,11 @@
                 {{ trans('cruds.productSize.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#product_product_crusts" role="tab" data-toggle="tab">
+                {{ trans('cruds.productCrust.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="product_product_ingredients">
@@ -154,6 +159,9 @@
         </div>
         <div class="tab-pane" role="tabpanel" id="product_product_sizes">
             @includeIf('admin.products.relationships.productProductSizes', ['productSizes' => $product->productProductSizes])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="product_product_crusts">
+            @includeIf('admin.products.relationships.productProductCrusts', ['productCrusts' => $product->productProductCrusts])
         </div>
     </div>
 </div>

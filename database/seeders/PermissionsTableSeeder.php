@@ -432,6 +432,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 106,
+                'title' => 'product_crust_create',
+            ],
+            [
+                'id'    => 107,
+                'title' => 'product_crust_edit',
+            ],
+            [
+                'id'    => 108,
+                'title' => 'product_crust_show',
+            ],
+            [
+                'id'    => 109,
+                'title' => 'product_crust_delete',
+            ],
+            [
+                'id'    => 110,
+                'title' => 'product_crust_access',
+            ],
+            [
+                'id'    => 111,
                 'title' => 'profile_password_edit',
             ],
         ];

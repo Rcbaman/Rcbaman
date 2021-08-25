@@ -55,16 +55,6 @@ class Order extends Model
         return $this->belongsTo(User::class, 'ordertakenby_id');
     }
 
-    public function customers()
-    {
-        return $this->belongsToMany(CustomerDetail::class);
-    }
-
-    public function ordertakenbies()
-    {
-        return $this->belongsToMany(User::class);
-    }
-
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Crust extends Model
+class ProductCrust extends Model
 {
     use SoftDeletes;
     use HasFactory;
 
-    public $table = 'crusts';
+    public $table = 'product_crusts';
 
     protected $dates = [
         'created_at',
@@ -21,21 +21,20 @@ class Crust extends Model
     ];
 
     protected $fillable = [
-        'name',
-        'slug',
+        'product_id',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    public function crustCrustSizes()
+    public function product()
     {
-        return $this->hasMany(CrustSize::class, 'crust_id', 'id');
+        return $this->belongsTo(Product::class, 'product_id');
     }
 
-    public function crustProductCrusts()
+    public function crusts()
     {
-        return $this->belongsToMany(ProductCrust::class);
+        return $this->belongsToMany(Crust::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)
