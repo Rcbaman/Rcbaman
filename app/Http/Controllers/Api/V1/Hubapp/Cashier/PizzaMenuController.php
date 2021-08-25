@@ -25,11 +25,18 @@ class PizzaMenuController extends BaseController
 
 
     public function productIdByProductInfo($category_id){
-        $products = Product::with(['categories','profile','productProductSizes','productProductIngredients'])->get();
+
+        $products = Product::with(['categories','profile','Ingredients.ingredients','Sizes.size', 'Sizes.size.sizeCrustSizes'])
+        ->where(function($query) use($category_id){
+            $query->whereHas('categories',function($query) use($category_id){
+                $query->where('category_id',$category_id);
+            });
+        })->get();
+
         if(count($products) > 0):
-            return $this->sendResponse(true,'categorylist','categorylistsuccess','Category List.',new PizzaMenuResource($products),200);
+            return $this->sendResponse(true,'categorybyProduct','categorybyProductsuccess','product List.',new PizzaMenuResource($products),200);
         else:
-            return $this->sendResponse(false,'categorylist','catrgorylisterror','No Category in List.');
+            return $this->sendResponse(false,'categorybyProduct','categorybyProducterror','No product in List.');
         endif;
     }
 
