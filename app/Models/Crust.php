@@ -33,11 +33,6 @@ class Crust extends Model
         return $this->hasMany(ProductCrustSize::class, 'crust_id', 'id');
     }
 
-    public function crustsDishes()
-    {
-        return $this->hasMany(Dish::class, 'crusts_id', 'id');
-    }
-
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

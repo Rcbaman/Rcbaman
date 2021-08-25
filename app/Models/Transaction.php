@@ -27,10 +27,12 @@ class Transaction extends Model
     ];
 
     protected $fillable = [
+        'method',
+        'sub_total',
+        'tax',
+        'other_charges',
         'amount',
         'status',
-        'type',
-        'method',
         'created_at',
         'updated_at',
         'deleted_at',

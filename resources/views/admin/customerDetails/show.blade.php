@@ -92,10 +92,18 @@
                 {{ trans('cruds.customerAddress.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#customer_orders" role="tab" data-toggle="tab">
+                {{ trans('cruds.order.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="customer_customer_addresses">
             @includeIf('admin.customerDetails.relationships.customerCustomerAddresses', ['customerAddresses' => $customerDetail->customerCustomerAddresses])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="customer_orders">
+            @includeIf('admin.customerDetails.relationships.customerOrders', ['orders' => $customerDetail->customerOrders])
         </div>
     </div>
 </div>

@@ -35,6 +35,12 @@ class UpdateProductRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'categories.*' => [
+                'integer',
+            ],
+            'categories' => [
+                'array',
+            ],
         ];
     }
 }

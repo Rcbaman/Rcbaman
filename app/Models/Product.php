@@ -69,9 +69,9 @@ class Product extends Model implements HasMedia
         return $this->hasMany(ProductCrustSize::class, 'product_id', 'id');
     }
 
-    public function productDishes()
+    public function productProductIngredients()
     {
-        return $this->hasMany(Dish::class, 'product_id', 'id');
+        return $this->hasMany(ProductIngredient::class, 'product_id', 'id');
     }
 
     public function getImageAttribute()
@@ -96,6 +96,11 @@ class Product extends Model implements HasMedia
         });
 
         return $files;
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)
