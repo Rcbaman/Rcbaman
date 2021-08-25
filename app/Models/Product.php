@@ -74,11 +74,6 @@ class Product extends Model implements HasMedia
         return $this->hasMany(ProductIngredient::class, 'product_id', 'id');
     }
 
-    public function productProductCategories()
-    {
-        return $this->hasMany(ProductCategory::class, 'product_id', 'id');
-    }
-
     public function getImageAttribute()
     {
         $file = $this->getMedia('image')->last();
@@ -101,6 +96,11 @@ class Product extends Model implements HasMedia
         });
 
         return $files;
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

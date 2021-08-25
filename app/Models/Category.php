@@ -44,11 +44,6 @@ class Category extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    public function categoryProductCategories()
-    {
-        return $this->belongsToMany(ProductCategory::class);
-    }
-
     public function getIconAttribute()
     {
         $file = $this->getMedia('icon')->last();

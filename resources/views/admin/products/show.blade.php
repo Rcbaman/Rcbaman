@@ -103,6 +103,16 @@
                             {{ $product->slug }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.product.fields.category') }}
+                        </th>
+                        <td>
+                            @foreach($product->categories as $key => $category)
+                                <span class="label label-info">{{ $category->name }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
@@ -134,11 +144,6 @@
                 {{ trans('cruds.productIngredient.title') }}
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#product_product_categories" role="tab" data-toggle="tab">
-                {{ trans('cruds.productCategory.title') }}
-            </a>
-        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="product_product_variation_sizes">
@@ -149,9 +154,6 @@
         </div>
         <div class="tab-pane" role="tabpanel" id="product_product_ingredients">
             @includeIf('admin.products.relationships.productProductIngredients', ['productIngredients' => $product->productProductIngredients])
-        </div>
-        <div class="tab-pane" role="tabpanel" id="product_product_categories">
-            @includeIf('admin.products.relationships.productProductCategories', ['productCategories' => $product->productProductCategories])
         </div>
     </div>
 </div>

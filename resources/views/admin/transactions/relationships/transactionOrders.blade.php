@@ -40,12 +40,6 @@
                                 {{ trans('cruds.order.fields.order_status') }}
                             </th>
                             <th>
-                                {{ trans('cruds.order.fields.customer') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.order.fields.ordertakenby') }}
-                            </th>
-                            <th>
                                 &nbsp;
                             </th>
                         </tr>
@@ -77,16 +71,6 @@
                                 </td>
                                 <td>
                                     {{ App\Models\Order::ORDER_STATUS_SELECT[$order->order_status] ?? '' }}
-                                </td>
-                                <td>
-                                    @foreach($order->customers as $key => $item)
-                                        <span class="badge badge-info">{{ $item->first_name }}</span>
-                                    @endforeach
-                                </td>
-                                <td>
-                                    @foreach($order->ordertakenbies as $key => $item)
-                                        <span class="badge badge-info">{{ $item->name }}</span>
-                                    @endforeach
                                 </td>
                                 <td>
                                     @can('order_show')

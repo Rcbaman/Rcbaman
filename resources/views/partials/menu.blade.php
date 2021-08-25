@@ -84,7 +84,7 @@
                     </li>
                 @endcan
                 @can('product_management_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/products*") ? "menu-open" : "" }} {{ request()->is("admin/categories*") ? "menu-open" : "" }} {{ request()->is("admin/ingredients*") ? "menu-open" : "" }} {{ request()->is("admin/variations-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/crusts*") ? "menu-open" : "" }} {{ request()->is("admin/product-variation-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/product-crust-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/product-ingredients*") ? "menu-open" : "" }} {{ request()->is("admin/product-categories*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/products*") ? "menu-open" : "" }} {{ request()->is("admin/categories*") ? "menu-open" : "" }} {{ request()->is("admin/ingredients*") ? "menu-open" : "" }} {{ request()->is("admin/variations-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/crusts*") ? "menu-open" : "" }} {{ request()->is("admin/product-variation-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/product-crust-sizes*") ? "menu-open" : "" }} {{ request()->is("admin/product-ingredients*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-archive">
 
@@ -187,18 +187,6 @@
                                         </i>
                                         <p>
                                             {{ trans('cruds.productIngredient.title') }}
-                                        </p>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('product_category_access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.product-categories.index") }}" class="nav-link {{ request()->is("admin/product-categories") || request()->is("admin/product-categories/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-cogs">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.productCategory.title') }}
                                         </p>
                                     </a>
                                 </li>

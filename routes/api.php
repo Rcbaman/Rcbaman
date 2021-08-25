@@ -54,12 +54,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Logs
     Route::apiResource('logs', 'LogsApiController');
 
-
     // Settings
-    //Route::apiResource('settings', 'SettingsApiController');
-
-    // Product Categories
-    Route::apiResource('product-categories', 'ProductCategoriesApiController');
+    Route::apiResource('settings', 'SettingsApiController');
 });
 
 
