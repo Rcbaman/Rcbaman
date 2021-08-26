@@ -45,9 +45,9 @@ class PizzaMenuController extends BaseController
         $products = Category::with(['products','products.profile','products.Crusts.crusts','products.Ingredients.ingredients','products.Sizes.size', 'products.Sizes.size.sizeCrustSizes'])->get();
 
         if(count($products) > 0):
-            return $this->sendResponse(true,'categorybyProduct','categorybyProductsuccess','product List.',new PizzaMenuResource($products),200);
+            return $this->sendResponse(true,'menuData','product List.','',new PizzaMenuResource($products),200);
         else:
-            return $this->sendResponse(false,'categorybyProduct','categorybyProducterror','No product in List.');
+            return $this->sendResponse(false,'menuData','No product in List.','');
         endif;
 
     }
