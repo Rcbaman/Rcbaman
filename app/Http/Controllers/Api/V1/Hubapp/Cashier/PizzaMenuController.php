@@ -40,7 +40,7 @@ class PizzaMenuController extends BaseController
         endif;
     }
 
-    public function GetProductByCategory(){
+    public function menuData(){
         
         $products = Category::with(['products','products.profile','products.Crusts.crusts','products.Ingredients.ingredients','products.Sizes.size', 'products.Sizes.size.sizeCrustSizes'])->get();
 
