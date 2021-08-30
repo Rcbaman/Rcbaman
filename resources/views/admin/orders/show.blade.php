@@ -33,6 +33,32 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.order.fields.transaction') }}
+                        </th>
+                        <td>
+                            @foreach($order->transactions as $key => $transaction)
+                                <span class="label label-info">{{ $transaction->amount }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.order.fields.customer') }}
+                        </th>
+                        <td>
+                            {{ $order->customer->first_name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.order.fields.ordertakenby') }}
+                        </th>
+                        <td>
+                            {{ $order->ordertakenby->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.order.fields.order_status') }}
                         </th>
                         <td>
@@ -41,10 +67,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.order.fields.transaction') }}
+                            {{ trans('cruds.order.fields.ordertype') }}
                         </th>
                         <td>
-                            {{ $order->transaction->amount ?? '' }}
+                            {{ $order->ordertype->name ?? '' }}
                         </td>
                     </tr>
                 </tbody>

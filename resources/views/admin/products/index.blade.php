@@ -47,6 +47,18 @@
                             {{ trans('cruds.product.fields.multi_images') }}
                         </th>
                         <th>
+                            {{ trans('cruds.product.fields.category') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.product.fields.profile') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.product.fields.ingredients') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.product.fields.crusts') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.product.fields.status') }}
                         </th>
                         <th>
@@ -85,6 +97,38 @@
                         <td>
                         </td>
                         <td>
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($categories as $key => $item)
+                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($product_profiles as $key => $item)
+                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($ingredients as $key => $item)
+                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($crusts as $key => $item)
+                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
                         </td>
                         <td>
                             <select class="search" strict="true">
@@ -137,6 +181,24 @@
                                     <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
                                         <img src="{{ $media->getUrl('thumb') }}">
                                     </a>
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach($product->categories as $key => $item)
+                                    <span class="badge badge-info">{{ $item->name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                {{ $product->profile->name ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($product->ingredients as $key => $item)
+                                    <span class="badge badge-info">{{ $item->name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach($product->crusts as $key => $item)
+                                    <span class="badge badge-info">{{ $item->name }}</span>
                                 @endforeach
                             </td>
                             <td>

@@ -7,7 +7,11 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyProductRequest;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Category;
+use App\Models\Crust;
+use App\Models\Ingredient;
 use App\Models\Product;
+use App\Models\ProductProfile;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -21,22 +25,40 @@ class ProductsController extends Controller
     {
         abort_if(Gate::denies('product_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $products = Product::with(['media'])->get();
+        $products = Product::with(['categories', 'profile', 'ingredients', 'crusts', 'media'])->get();
 
-        return view('admin.products.index', compact('products'));
+        $categories = Category::get();
+
+        $product_profiles = ProductProfile::get();
+
+        $ingredients = Ingredient::get();
+
+        $crusts = Crust::get();
+
+        return view('admin.products.index', compact('products', 'categories', 'product_profiles', 'ingredients', 'crusts'));
     }
 
     public function create()
     {
         abort_if(Gate::denies('product_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.products.create');
+        $categories = Category::pluck('name', 'id');
+
+        $profiles = ProductProfile::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $ingredients = Ingredient::pluck('name', 'id');
+
+        $crusts = Crust::pluck('name', 'id');
+
+        return view('admin.products.create', compact('categories', 'profiles', 'ingredients', 'crusts'));
     }
 
     public function store(StoreProductRequest $request)
     {
         $product = Product::create($request->all());
-
+        $product->categories()->sync($request->input('categories', []));
+        $product->ingredients()->sync($request->input('ingredients', []));
+        $product->crusts()->sync($request->input('crusts', []));
         if ($request->input('image', false)) {
             $product->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
         }
@@ -56,13 +78,25 @@ class ProductsController extends Controller
     {
         abort_if(Gate::denies('product_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.products.edit', compact('product'));
+        $categories = Category::pluck('name', 'id');
+
+        $profiles = ProductProfile::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $ingredients = Ingredient::pluck('name', 'id');
+
+        $crusts = Crust::pluck('name', 'id');
+
+        $product->load('categories', 'profile', 'ingredients', 'crusts');
+
+        return view('admin.products.edit', compact('categories', 'profiles', 'ingredients', 'crusts', 'product'));
     }
 
     public function update(UpdateProductRequest $request, Product $product)
     {
         $product->update($request->all());
-
+        $product->categories()->sync($request->input('categories', []));
+        $product->ingredients()->sync($request->input('ingredients', []));
+        $product->crusts()->sync($request->input('crusts', []));
         if ($request->input('image', false)) {
             if (!$product->image || $request->input('image') !== $product->image->file_name) {
                 if ($product->image) {
@@ -95,7 +129,7 @@ class ProductsController extends Controller
     {
         abort_if(Gate::denies('product_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $product->load('productProductVariationSizes', 'productProductCrustSizes', 'productDishes');
+        $product->load('categories', 'profile', 'ingredients', 'crusts', 'productProductSizes');
 
         return view('admin.products.show', compact('product'));
     }

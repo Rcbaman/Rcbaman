@@ -89,6 +89,44 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.product.fields.category') }}
+                        </th>
+                        <td>
+                            @foreach($product->categories as $key => $category)
+                                <span class="label label-info">{{ $category->name }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.product.fields.profile') }}
+                        </th>
+                        <td>
+                            {{ $product->profile->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.product.fields.ingredients') }}
+                        </th>
+                        <td>
+                            @foreach($product->ingredients as $key => $ingredients)
+                                <span class="label label-info">{{ $ingredients->name }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.product.fields.crusts') }}
+                        </th>
+                        <td>
+                            @foreach($product->crusts as $key => $crusts)
+                                <span class="label label-info">{{ $crusts->name }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.product.fields.status') }}
                         </th>
                         <td>
@@ -120,30 +158,14 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#product_product_variation_sizes" role="tab" data-toggle="tab">
-                {{ trans('cruds.productVariationSize.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#product_product_crust_sizes" role="tab" data-toggle="tab">
-                {{ trans('cruds.productCrustSize.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#product_dishes" role="tab" data-toggle="tab">
-                {{ trans('cruds.dish.title') }}
+            <a class="nav-link" href="#product_product_sizes" role="tab" data-toggle="tab">
+                {{ trans('cruds.productSize.title') }}
             </a>
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="product_product_variation_sizes">
-            @includeIf('admin.products.relationships.productProductVariationSizes', ['productVariationSizes' => $product->productProductVariationSizes])
-        </div>
-        <div class="tab-pane" role="tabpanel" id="product_product_crust_sizes">
-            @includeIf('admin.products.relationships.productProductCrustSizes', ['productCrustSizes' => $product->productProductCrustSizes])
-        </div>
-        <div class="tab-pane" role="tabpanel" id="product_dishes">
-            @includeIf('admin.products.relationships.productDishes', ['dishes' => $product->productDishes])
+        <div class="tab-pane" role="tabpanel" id="product_product_sizes">
+            @includeIf('admin.products.relationships.productProductSizes', ['productSizes' => $product->productProductSizes])
         </div>
     </div>
 </div>
