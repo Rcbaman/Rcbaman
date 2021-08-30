@@ -73,6 +73,66 @@
                 <span class="help-block">{{ trans('cruds.product.fields.multi_images_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="categories">{{ trans('cruds.product.fields.category') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('categories') ? 'is-invalid' : '' }}" name="categories[]" id="categories" multiple>
+                    @foreach($categories as $id => $category)
+                        <option value="{{ $id }}" {{ in_array($id, old('categories', [])) ? 'selected' : '' }}>{{ $category }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('categories'))
+                    <span class="text-danger">{{ $errors->first('categories') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.category_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="profile_id">{{ trans('cruds.product.fields.profile') }}</label>
+                <select class="form-control select2 {{ $errors->has('profile') ? 'is-invalid' : '' }}" name="profile_id" id="profile_id">
+                    @foreach($profiles as $id => $entry)
+                        <option value="{{ $id }}" {{ old('profile_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('profile'))
+                    <span class="text-danger">{{ $errors->first('profile') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.profile_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="ingredients">{{ trans('cruds.product.fields.ingredients') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('ingredients') ? 'is-invalid' : '' }}" name="ingredients[]" id="ingredients" multiple>
+                    @foreach($ingredients as $id => $ingredient)
+                        <option value="{{ $id }}" {{ in_array($id, old('ingredients', [])) ? 'selected' : '' }}>{{ $ingredient }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('ingredients'))
+                    <span class="text-danger">{{ $errors->first('ingredients') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.ingredients_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="crusts">{{ trans('cruds.product.fields.crusts') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('crusts') ? 'is-invalid' : '' }}" name="crusts[]" id="crusts" multiple>
+                    @foreach($crusts as $id => $crust)
+                        <option value="{{ $id }}" {{ in_array($id, old('crusts', [])) ? 'selected' : '' }}>{{ $crust }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('crusts'))
+                    <span class="text-danger">{{ $errors->first('crusts') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.crusts_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required">{{ trans('cruds.product.fields.status') }}</label>
                 <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status" required>
                     <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>

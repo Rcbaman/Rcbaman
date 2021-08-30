@@ -35,6 +35,24 @@ class UpdateProductRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'categories.*' => [
+                'integer',
+            ],
+            'categories' => [
+                'array',
+            ],
+            'ingredients.*' => [
+                'integer',
+            ],
+            'ingredients' => [
+                'array',
+            ],
+            'crusts.*' => [
+                'integer',
+            ],
+            'crusts' => [
+                'array',
+            ],
         ];
     }
 }

@@ -20,6 +20,13 @@ class StoreOrderRequest extends FormRequest
             'total_amount' => [
                 'required',
             ],
+            'transactions.*' => [
+                'integer',
+            ],
+            'transactions' => [
+                'required',
+                'array',
+            ],
         ];
     }
 }

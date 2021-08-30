@@ -27,10 +27,12 @@ class Transaction extends Model
     ];
 
     protected $fillable = [
+        'method',
+        'sub_total',
+        'tax',
+        'other_charges',
         'amount',
         'status',
-        'type',
-        'method',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -38,7 +40,7 @@ class Transaction extends Model
 
     public function transactionOrders()
     {
-        return $this->hasMany(Order::class, 'transaction_id', 'id');
+        return $this->belongsToMany(Order::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

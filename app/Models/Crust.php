@@ -28,14 +28,14 @@ class Crust extends Model
         'deleted_at',
     ];
 
-    public function crustProductCrustSizes()
+    public function crustCrustSizes()
     {
-        return $this->hasMany(ProductCrustSize::class, 'crust_id', 'id');
+        return $this->hasMany(CrustSize::class, 'crust_id', 'id');
     }
 
-    public function crustsDishes()
+    public function crustsProducts()
     {
-        return $this->hasMany(Dish::class, 'crusts_id', 'id');
+        return $this->belongsToMany(Product::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)
